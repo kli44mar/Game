@@ -1,0 +1,17 @@
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.csprojAssemblyReference.cache
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.AssemblyInfoInputs.cache
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.AssemblyInfo.cs
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.csproj.CoreCompileInputs.cache
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.exe
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.deps.json
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.runtimeconfig.json
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.runtimeconfig.dev.json
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.dll
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\bin\Debug\netcoreapp3.1\ThiefWorld.pdb
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.Form1.resources
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.csproj.GenerateResource.cache
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.dll
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.pdb
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.genruntimeconfig.cache
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.Form2.resources
+C:\Users\maria\Documents\GitHub\Game\ThiefWorld\obj\Debug\netcoreapp3.1\ThiefWorld.Form3.resources
