@@ -40,17 +40,18 @@ namespace ThiefWorld
 
             button = new Button
             {
-                Location = new Point(1241, 40),
+                Location = new Point(1641, 40),
                 Text = "Магазин",
                 Font = new Font("Tahoma", 16),
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 192)
             };
+            
 
             button2 = new Button
             {
-                Location = new Point(1241, 60 + button.Size.Height),
+                Location = new Point(1641, 60 + button.Size.Height),
                 Text = "Переиграть",
                 Font = button.Font,
                 FlatStyle = FlatStyle.Flat,
@@ -60,13 +61,20 @@ namespace ThiefWorld
 
             button3 = new Button
             {
-                Location = new Point(730, 400),
+                Location = new Point(930, 450),
                 Text = "Играть",
                 Font = new Font("Tahoma", 20, FontStyle.Bold),
                 FlatStyle = FlatStyle.Flat,
                 Size = new Size(220, 150),
                 BackColor = Color.FromArgb(255, 255, 180)
             };
+
+            button3.Click += (sender, args) =>
+            {
+                //Sublevel newForm = new Sublevel();
+               // newForm.Show();
+            };
+
             pictureBox1 = new PictureBox
             {
                 BackColor = Color.Transparent,
