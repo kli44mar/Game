@@ -16,7 +16,7 @@ namespace ThiefWorld
         Level5 = 5,
         Shopping = 6
     }*/
-    class Game
+    public class Game
     {
         //GameStage stage;
         public Character character { get; set; }
