@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ThiefWorld.Architecture
 {
-    class Level<T>
+    public class Level
     {
         //доступные комплекты одежды
         //успеваемость в каждом подуровне
@@ -13,7 +13,7 @@ namespace ThiefWorld.Architecture
         public int Points { get; private set; }
         public List<string> AvailableClothes = new List<string> { "Initial" };
         public MathematicalExamples MathExamples;
-        public Sequences<T> Sequences;
+        public Sequences Sequences;
         public Issue Issue;
     }
 }

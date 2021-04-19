@@ -4,19 +4,19 @@ using System.Text;
 
 namespace ThiefWorld.Architecture
 {
-    public class Sequences<T>
+    public class Sequences
     {
-        public List<List<T>> SequenceList { get; private set; }
+        public List<List<string>> SequenceList { get; private set; }
         public int Score { get; private set; }
         public int PointsForExample { get; private set; }
 
-        public Sequences(List<List<T>> sequences)
+        public Sequences(List<List<string>> sequences)
         {
             this.SequenceList = sequences;
             this.PointsForExample = 120 / sequences.Count;
         }
 
-        public bool CompareResult(int numberOfSequence, List<T> sequence)
+        public bool CompareResult(int numberOfSequence, List<string> sequence)
         {
             if (numberOfSequence >= SequenceList.Count || sequence.Count != SequenceList[numberOfSequence].Count)
                 throw new ArgumentException();
