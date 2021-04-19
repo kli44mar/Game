@@ -31,7 +31,7 @@ namespace ThiefWorld
             this.Score += income;
         }
 
-        public void Update (string outfit, int price)
+        public void AfterPurchase(string outfit, int price)
         {
             this.OutfitName = outfit;
             this.Money -= price;

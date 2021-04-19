@@ -22,26 +22,4 @@ namespace ThiefWorld
         public Character character { get; set; }
 
     }
-
-    class Level
-    {
-        //доступные комплекты одежды
-        //успеваемость в каждом подуровне
-        //три подуровня
-    }
-
-    class Examples
-    {
-        //математические примеры
-    }
-
-    class Sequence
-    {
-        //последовательности
-    }
-
-    class Riddle
-    {
-        //загадки, задачки
-    }
 }
