@@ -12,5 +12,7 @@ namespace ThiefWorld.Interface
         public Level Level3 { get; private set; }
         public Level Level4 { get; private set; }
         public Level Level5 { get; private set; }
+        
+
     }
 }

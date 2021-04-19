@@ -17,7 +17,8 @@ namespace ThiefWorld
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ThiefWorld(null));
+            //Application.Run(new ThiefWorld(null));
+            Application.Run(new LevelMap());
         }
 
         /**

@@ -68,14 +68,14 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            list = new List<List<int>>();
-            list.Add(new List<int> { 1, 2, 3 });
-            list.Add(new List<int> { 67, 3, 90 });
-            sequences = new Sequences<int>(list);
+            list = new List<List<string>>();
+            list.Add(new List<string> { "1", "2", "3" });
+            list.Add(new List<string> { "67", "3", "90" });
+            sequences = new Sequences(list);
         }
 
-        private List<List<int>> list;
-        private Sequences<int> sequences;
+        private List<List<string>> list;
+        private Sequences sequences;
 
         [Test]
         public void InitializationSequences()
@@ -87,9 +87,9 @@ namespace Tests
         [Test]
         public void CompareSequenceResultTest()
         {
-            Assert.AreEqual(false, sequences.CompareResult(0, new List<int> { 1, 2, 2 }));
-            Assert.IsTrue(sequences.CompareResult(1, new List<int> { 67, 3, 90 }));
-            Assert.Throws<ArgumentException>(() => sequences.CompareResult(3, new List<int> { 8, 9 }));
+            Assert.AreEqual(false, sequences.CompareResult(0, new List<string> { "1", "2", "2" }));
+            Assert.IsTrue(sequences.CompareResult(1, new List<string> { "67", "3", "90" }));
+            Assert.Throws<ArgumentException>(() => sequences.CompareResult(3, new List<string> { "8", "9" }));
         }
     }
 
