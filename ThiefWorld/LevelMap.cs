@@ -22,7 +22,7 @@ namespace ThiefWorld
             FormBorderStyle = FormBorderStyle.FixedDialog;
             if (imagesDirectory == null)
                 imagesDirectory = new DirectoryInfo("Additional images");
-            backGround = Tuple.Create("Level Map.png", (Bitmap)Image.FromFile(imagesDirectory.GetFiles().Where(x => x.Name.Equals("LevelMap.png")).First().FullName));
+            backGround = Tuple.Create("LevelMap.png", (Bitmap)Image.FromFile(imagesDirectory.GetFiles().Where(x => x.Name.Equals("LevelMap.png")).First().FullName));
             BackgroundImage = backGround.Item2;
         }
 

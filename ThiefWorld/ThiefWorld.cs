@@ -18,11 +18,12 @@ namespace ThiefWorld
         private readonly Button button3;
         private readonly Label label;
         private readonly PictureBox pictureBox1;
-        public ThiefWorld(Game game)
+        public ThiefWorld()
         {
             WindowState = FormWindowState.Maximized;
-            BackgroundImage = Image.FromFile("C:\\Users\\maria\\Pictures\\игра\\3.jpg");
+            BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
+            DoubleBuffered = true;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
             label = new Label()
@@ -31,7 +32,7 @@ namespace ThiefWorld
                 Text = "Дорогой вор, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
                 " Единственный способ зароботать деньги -  проходить уровни.",
-                Size = new Size(600, 160),
+                Size = new Size(700, 200),
                 Font = new Font("Tahoma", 14),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 210)
@@ -52,7 +53,7 @@ namespace ThiefWorld
             button2 = new Button
             {
                 Location = new Point(1641, 60 + button.Size.Height),
-                Text = "Переиграть",
+                Text = "Выйти",
                 Font = button.Font,
                 FlatStyle = FlatStyle.Flat,
                 Size = button.Size,
@@ -69,20 +70,28 @@ namespace ThiefWorld
                 BackColor = Color.FromArgb(255, 255, 180)
             };
 
+            button2.Click += (sender, args) =>
+            {
+                Close();
+            };
+
             button3.Click += (sender, args) =>
             {
-                //Sublevel newForm = new Sublevel();
-               // newForm.Show();
+                Sublevel newForm = new Sublevel();
+                newForm.Show();
+               // Close();
+                
             };
 
             pictureBox1 = new PictureBox
             {
                 BackColor = Color.Transparent,
-                Image = Image.FromFile("C:\\Users\\maria\\Pictures\\игра\\8QGE.png"),
+                Image = Properties.Resources.Initial,
                 Location = new Point(26, 279),
-                Size = new Size(350, 525),
+                Size = new Size(400, 575),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
+            
 
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);
