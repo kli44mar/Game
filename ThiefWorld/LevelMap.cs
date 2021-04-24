@@ -25,6 +25,7 @@ namespace ThiefWorld
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
+<<<<<<< HEAD
             BackgroundImage = LevelsImages.LevelMapBackground;
             //InitializeComponent();
             for (var i = 0; i<3; i++)
@@ -51,6 +52,12 @@ namespace ThiefWorld
                 };
                 Controls.Add(pictureBox1);
             }
+=======
+            if (imagesDirectory == null)
+                imagesDirectory = new DirectoryInfo("Additional images");
+            backGround = Tuple.Create("LevelMap.png", (Bitmap)Image.FromFile(imagesDirectory.GetFiles().Where(x => x.Name.Equals("LevelMap.png")).First().FullName));
+            BackgroundImage = backGround.Item2;
+>>>>>>> 078512dae76e3ab186af721018c0aab0a6fc636d
         }
 
 
