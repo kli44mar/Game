@@ -13,18 +13,55 @@ namespace ThiefWorld
 {
     public partial class LevelMap : Form
     {
-        private readonly Tuple<string, Bitmap> backGround;
+        public Bitmap Circle=LevelsImages.Circle;
+        public PictureBox picture1;
+        //public PictureBox picture1;
+        //public PictureBox picture1;
+        //public PictureBox picture1;
+        //public PictureBox picture1;
 
-        public LevelMap(DirectoryInfo imagesDirectory = null)
+        public LevelMap()
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            if (imagesDirectory == null)
-                imagesDirectory = new DirectoryInfo("Additional images");
-            backGround = Tuple.Create("Level Map.png", (Bitmap)Image.FromFile(imagesDirectory.GetFiles().Where(x => x.Name.Equals("LevelMap.png")).First().FullName));
-            BackgroundImage = backGround.Item2;
+            BackgroundImage = LevelsImages.LevelMapBackground;
+            //InitializeComponent();
+            for (var i = 0; i<3; i++)
+            {
+                var pictureBox = new PictureBox
+                {
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources._18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview,
+                    Location = new Point(100+i*800, 100),
+                    Size = new Size(200, 200),
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                Controls.Add(pictureBox);
+            }
+            for (var i = 0; i < 2; i++)
+            {
+                var pictureBox1 = new PictureBox
+                {
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources._18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview,
+                    Location = new Point(300 + i * 1000, 800),
+                    Size = new Size(200, 200),
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                Controls.Add(pictureBox1);
+            }
         }
+
+
+
+
+
+
+
+        private void LevelMap_Paint(object sender, PaintEventArgs e)
+        {
+        }   
 
         private void LevelMap_Load(object sender, EventArgs e)
         {

@@ -29,16 +29,19 @@ namespace ThiefWorld
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LevelMap));
             this.SuspendLayout();
             // 
             // LevelMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "LevelMap";
             this.Text = "LevelMap";
             this.Load += new System.EventHandler(this.LevelMap_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.LevelMap_Paint);
             this.ResumeLayout(false);
 
         }
