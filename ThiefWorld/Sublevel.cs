@@ -15,8 +15,6 @@ namespace ThiefWorld
     public partial class Sublevel : Form
     {
         public Levels Level;
-        DateTime time = DateTime.Now.AddMinutes(5);
-        //Timer timer = new Timer();
         List<string> example = new List<string>();
         Label label1 = new Label();
 
@@ -24,13 +22,7 @@ namespace ThiefWorld
         {
             this.Level = Level;
         }
-       /* private void timer_Tick(object sender, EventArgs e)
-        {
-            var min = time - DateTime.Now;
-            if (DateTime.Now == time)
-                timer.Stop();
-           
-        }*/
+   
         public Sublevel()
         {
             Load += (sender, args) => StartTimer();
@@ -40,9 +32,6 @@ namespace ThiefWorld
             DoubleBuffered = true;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
-            //timer.Start();
-            //timer.Interval = 1000;
-           // timer.Tick += timer_Tick;
             var button = new Button
             {
                 Location = new Point(40, 40),
@@ -104,7 +93,7 @@ namespace ThiefWorld
                         box.Enabled=false;
                         box.BackColor = Color.Red;
                         box.Text = "Ответ: " + box.Text;
-                    }; // 
+                    }; 
                     Controls.Add(box);
                     Controls.Add(button2);
                     Controls.Add(label);
