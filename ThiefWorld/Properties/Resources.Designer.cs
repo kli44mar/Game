@@ -63,6 +63,20 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
+=======
+        internal static System.Drawing.Bitmap _18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("_18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_remov" +
+                        "ebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
         internal static System.Drawing.Bitmap _3 {
             get {
                 object obj = ResourceManager.GetObject("_3", resourceCulture);
@@ -96,6 +110,7 @@ namespace ThiefWorld.Properties {
         internal static System.Drawing.Bitmap Level_Background {
             get {
                 object obj = ResourceManager.GetObject("Level_Background", resourceCulture);
+<<<<<<< HEAD
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +121,8 @@ namespace ThiefWorld.Properties {
         internal static System.Drawing.Bitmap menu {
             get {
                 object obj = ResourceManager.GetObject("menu", resourceCulture);
+=======
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

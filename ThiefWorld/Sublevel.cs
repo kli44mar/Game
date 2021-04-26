@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThiefWorld.Architecture;
 using ThiefWorld.Interface;
@@ -13,12 +15,18 @@ namespace ThiefWorld
 {
     public partial class Sublevel : Form
     {
+<<<<<<< HEAD
         public Levels Levels = new Levels();
         public Level level;
         DateTime time = DateTime.Now.AddMinutes(5);
         Timer timer = new Timer();
+=======
+        public Levels Level;
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
         List<string> example = new List<string>();
+        Label label1 = new Label();
 
+<<<<<<< HEAD
         private void timer_Tick(object sender, EventArgs e)
         {
             var min = time - DateTime.Now;
@@ -37,16 +45,22 @@ namespace ThiefWorld
             Controls.Add(label);
         }
         public Sublevel(int numberOfLevel)
+=======
+        public Sublevel(Levels Level)
         {
+            this.Level = Level;
+        }
+   
+        public Sublevel()
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
+        {
+            Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
             Size = MaximumSize;
             DoubleBuffered = true;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
-            timer.Start();
-            timer.Interval = 1000;
-            timer.Tick += timer_Tick;
             var button = new Button
             {
                 Location = new Point(40, 40),
@@ -59,9 +73,11 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
+<<<<<<< HEAD
                 var newForm = new LevelMap();
+=======
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
                 Close();
-                newForm.ShowDialog();
             };
 
             var button2 = new Button
@@ -119,7 +135,15 @@ namespace ThiefWorld
                         BackColor = label.BackColor,
                         Font = label.Font
                     };
+<<<<<<< HEAD
                     button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example.Value; // 
+=======
+                    button2.Click += (sender, args) => {
+                        box.Enabled=false;
+                        box.BackColor = Color.Red;
+                        box.Text = "Ответ: " + box.Text;
+                    }; 
+>>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
                     Controls.Add(box);
                     Controls.Add(button2);
                     Controls.Add(label);
@@ -146,7 +170,18 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 192)
             };
+            label1 = new Label
+            {
+                Location = new Point(1100, 60),
+                Font = new Font("Tahoma", 18, FontStyle.Bold),
+                Size = new Size(290, 100),
+                FlatStyle = FlatStyle.Flat,
+                Padding = new Padding(60, 35, 5, 5),
+                BackColor = Color.FromArgb(255, 255, 192)
+            };
+            
 
+            Controls.Add(label1);
             Controls.Add(button);
             Controls.Add(button2);
             Controls.Add(button3);
@@ -159,6 +194,18 @@ namespace ThiefWorld
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             graphics.FillRectangle(Brushes.LemonChiffon, 0, 0, 500, ClientSize.Height);
             graphics.FillRectangle(Brushes.LemonChiffon, 700, 200, 1080, ClientSize.Height-300);
+        }
+
+        private async void StartTimer()
+        {
+            TimeSpan ts = new TimeSpan(0, 5, 0);
+            while (ts > TimeSpan.Zero)
+            {
+                label1.Text = ts.ToString();
+                await Task.Delay(1000);
+                ts -= TimeSpan.FromSeconds(1);
+            }
+            Close();
         }
         private void AddExamples()
         {
