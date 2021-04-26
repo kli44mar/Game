@@ -77,10 +77,8 @@ namespace ThiefWorld
 
             button3.Click += (sender, args) =>
             {
-                Sublevel newForm = new Sublevel();
+                LevelMap newForm = new LevelMap();
                 newForm.Show();
-               // Close();
-                
             };
 
             pictureBox1 = new PictureBox

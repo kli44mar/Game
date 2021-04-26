@@ -6,21 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ThiefWorld.Architecture;
 using ThiefWorld.Interface;
 
 namespace ThiefWorld
 {
     public partial class Sublevel : Form
     {
-        public Levels Level;
+        public Levels Levels = new Levels();
+        public Level level;
         DateTime time = DateTime.Now.AddMinutes(5);
         Timer timer = new Timer();
         List<string> example = new List<string>();
 
-        public Sublevel(Levels Level)
-        {
-            this.Level = Level;
-        }
         private void timer_Tick(object sender, EventArgs e)
         {
             var min = time - DateTime.Now;
@@ -38,7 +36,7 @@ namespace ThiefWorld
             };
             Controls.Add(label);
         }
-            public Sublevel()
+        public Sublevel(int numberOfLevel)
         {
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -61,7 +59,7 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
-                var newForm = new ThiefWorld();
+                var newForm = new LevelMap();
                 Close();
                 newForm.ShowDialog();
             };
@@ -78,16 +76,29 @@ namespace ThiefWorld
 
             button2.Click += (sender, args) =>
             {
-                AddExamples();
-                for (var i = 0; i < 8; i++)
+                if (numberOfLevel == 1)
+                    level = Levels.Level1;
+                if (numberOfLevel == 2)
+                    level = Levels.Level2;
+                if (numberOfLevel == 3)
+                    level = Levels.Level3;
+                if (numberOfLevel == 4)
+                    level = Levels.Level4;
+                if (numberOfLevel == 5)
+                    level = Levels.Level5;
+                //AddExamples();
+                var mathExamples = level.MathExamples;
+                //for (var i = 0; i < mathExamples.MathExamples.Count; i++)
+                var i = 0;
+                foreach (var example in mathExamples.MathExamples)
                 {
                     var label = new Label
                     {
                         Location = new Point(ClientSize.Width / 2 - 100, 250 + 80 * i),
                         Size = new Size(400, 50),
-                        Text = "Введите ответ: " + example[i],
+                        Text = "Введите ответ: " + example.Key,
                         FlatStyle = FlatStyle.Flat,
-                        Font = new Font("Tahoma", 12, FontStyle.Bold),
+                        Font = new Font("Tahoma", 10, FontStyle.Bold),
                         BackColor = Color.Transparent
                     };
 
@@ -108,10 +119,11 @@ namespace ThiefWorld
                         BackColor = label.BackColor,
                         Font = label.Font
                     };
-                    button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example[i].Take(example[i].Count()-1).Skip(1).ToString(); // 
+                    button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example.Value; // 
                     Controls.Add(box);
                     Controls.Add(button2);
                     Controls.Add(label);
+                    i++;
                 }
             };
 

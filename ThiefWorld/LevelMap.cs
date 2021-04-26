@@ -8,71 +8,134 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ThiefWorld.Architecture;
+using ThiefWorld.Interface;
 
 namespace ThiefWorld
 {
     public partial class LevelMap : Form
     {
         public Bitmap Circle=LevelsImages.Circle;
-        public PictureBox picture1;
-        //public PictureBox picture1;
-        //public PictureBox picture1;
-        //public PictureBox picture1;
-        //public PictureBox picture1;
+        public PictureBox Menu;
+        private Graphics graphics;
+        private int NumberOfLevel;
+
+        private Levels levels;
+
+        public PictureBox level1Point;
+        public PictureBox level2Point;
+        public PictureBox level3Point;
+        public PictureBox level4Point;
+        public PictureBox level5Point;
 
         public LevelMap()
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
-<<<<<<< HEAD
             BackgroundImage = LevelsImages.LevelMapBackground;
-            //InitializeComponent();
-            for (var i = 0; i<3; i++)
-            {
-                var pictureBox = new PictureBox
-                {
-                    BackColor = Color.Transparent,
-                    Image = Properties.Resources._18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview,
-                    Location = new Point(100+i*800, 100),
-                    Size = new Size(200, 200),
-                    SizeMode = PictureBoxSizeMode.Zoom
-                };
-                Controls.Add(pictureBox);
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                var pictureBox1 = new PictureBox
-                {
-                    BackColor = Color.Transparent,
-                    Image = Properties.Resources._18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview,
-                    Location = new Point(300 + i * 1000, 800),
-                    Size = new Size(200, 200),
-                    SizeMode = PictureBoxSizeMode.Zoom
-                };
-                Controls.Add(pictureBox1);
-            }
-=======
-            if (imagesDirectory == null)
-                imagesDirectory = new DirectoryInfo("Additional images");
-            backGround = Tuple.Create("LevelMap.png", (Bitmap)Image.FromFile(imagesDirectory.GetFiles().Where(x => x.Name.Equals("LevelMap.png")).First().FullName));
-            BackgroundImage = backGround.Item2;
->>>>>>> 078512dae76e3ab186af721018c0aab0a6fc636d
+            levels = new Levels();
+            this.Load += LevelMap_Load;
+            //InitializeComponent(); 
         }
 
 
-
-
-
-
-
-        private void LevelMap_Paint(object sender, PaintEventArgs e)
-        {
-        }   
-
         private void LevelMap_Load(object sender, EventArgs e)
         {
+            NumberOfLevel = 1;
+            level1Point = new PictureBox
+            {
+                Name = "1",
+                BackColor = Color.Transparent,
+                Image = LevelsImages.circle1,
+                Location = new Point(150, 150),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom,
+            };
+            level2Point = new PictureBox
+            {
+                Name = "2",
+                BackColor = Color.Transparent,
+                Image = LevelsImages.circle2,
+                Location = new Point(850, 150),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            level3Point = new PictureBox
+            {
+                Name = "3",
+                BackColor = Color.Transparent,
+                Image = LevelsImages.circle3,
+                Location = new Point(1650, 150),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            level4Point = new PictureBox
+            {
+                Name = "4",
+                BackColor = Color.Transparent,
+                Image = LevelsImages.circle4,
+                Location = new Point(400, 700),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            level5Point = new PictureBox
+            {
+                Name = "5",
+                BackColor = Color.Transparent,
+                Image = LevelsImages.circle5,
+                Location = new Point(1300, 700),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            Menu = new PictureBox
+            {
+                BackColor = Color.Transparent,
+                Image = LevelsImages.menu,
+                Location = new Point(20, 860),
+                Size = new Size(100, 100),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            Menu.Click += (sender, args) =>
+              {
+                  var initial = new ThiefWorld();
+                  Close();
+                  initial.Show();
+              };
+            level1Point.Click += LevelsPoint_Click;
+            if (levels.Level1.Complete)
+            {
+                level2Point.Click += LevelsPoint_Click;
+                NumberOfLevel = 2;
+            }
+            if (levels.Level2.Complete)
+            {
+                level3Point.Click += LevelsPoint_Click;
+                NumberOfLevel = 3;
+            }
+            if (levels.Level3.Complete)
+            {
+                level4Point.Click += LevelsPoint_Click;
+                NumberOfLevel = 4;
+            }
+            if (levels.Level4.Complete)
+            {
+                level5Point.Click += LevelsPoint_Click;
+                NumberOfLevel = 5;
+            }
+            Controls.Add(Menu);
+            Controls.Add(level1Point);
+            Controls.Add(level2Point);
+            Controls.Add(level3Point);
+            Controls.Add(level4Point);
+            Controls.Add(level5Point);
+            
+        }
 
+        private void LevelsPoint_Click(object sender, EventArgs e)
+        {
+            Sublevel newForm = new Sublevel(NumberOfLevel);
+            newForm.Show();
+            Close();
         }
     }
 }

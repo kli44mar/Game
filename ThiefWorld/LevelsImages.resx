@@ -121,7 +121,25 @@
   <data name="Circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\18-189436_dot-for-making-logo-emblem-transparent-graphicdesign-transparent-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="circle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\quote-2021-04-25-778c11641d01f8d9a0deb59bebf25acb-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\quote-2021-04-25-b65e6003c725a07af46e4d2834d59d9e-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\quote-2021-04-25-c81a8164b93fd2e5a818af9aeca8b83c-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\quote-2021-04-25-417346f893b1e454b3c5664ae357df03-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\quote-2021-04-25-07704706bfb26ff9d0c035a82c7c5c5b-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LevelMapBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\thomas-meurisse-highresscreenshot00049.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\кнопка-меню-специальная-желтая-квадратная-105916740-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
