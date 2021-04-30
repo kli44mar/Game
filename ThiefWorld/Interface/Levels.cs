@@ -13,6 +13,7 @@ namespace ThiefWorld.Interface
         public Level Level4 { get; private set; }
         public Level Level5 { get; private set; }
         
+<<<<<<< HEAD
         public Levels()
         {
             Level1 = new Level(new Dictionary<string, string>
@@ -244,5 +245,8 @@ namespace ThiefWorld.Interface
             Level4);
         }
 
+=======
+        
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
     }
 }

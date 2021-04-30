@@ -63,6 +63,7 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap _18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("_18_189436_dot_for_making_logo_emblem_transparent_graphicdesign_transparent_remov" +
@@ -74,6 +75,8 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+=======
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
         internal static System.Drawing.Bitmap _3 {
             get {
                 object obj = ResourceManager.GetObject("_3", resourceCulture);

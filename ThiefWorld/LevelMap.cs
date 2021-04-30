@@ -15,7 +15,10 @@ namespace ThiefWorld
     public partial class LevelMap : Form
     {
         public PictureBox Menu;
+<<<<<<< HEAD
         private int NumberOfLevel;
+=======
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
 
         private Levels levels;
 
@@ -24,28 +27,39 @@ namespace ThiefWorld
         public PictureBox level3Point;
         public PictureBox level4Point;
         public PictureBox level5Point;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
         public PictureBox picture1;
 
-        public LevelMap()
+        public LevelMap(Levels levels)
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
             BackgroundImage = LevelsImages.LevelMapBackground;
-            levels = new Levels();
+            //levels = new Levels();
+            this.levels = levels;
             this.Load += LevelMap_Load;
         }
 
 
         private void LevelMap_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             NumberOfLevel = 1;
             
 
             BackgroundImage = LevelsImages.LevelMapBackground;
 
+=======
+            BackgroundImage = LevelsImages.LevelMapBackground;
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
             level1Point = new PictureBox
             {
                 Name = "1",
@@ -95,19 +109,54 @@ namespace ThiefWorld
             {
                 BackColor = Color.Transparent,
                 Image = LevelsImages.menu,
-                Location = new Point(20, 860),
-                Size = new Size(100, 100),
+                Location = new Point(20, 800),
+                Size = new Size(200,200),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
             Menu.Click += (sender, args) =>
-              {
+            {
                   var initial = new ThiefWorld();
                   Close();
                   initial.Show();
-              };
-            level1Point.Click += LevelsPoint_Click;
+            };
+            level1Point.Click += (sender, args)=>
+            {
+                Sublevel newForm = new Sublevel(1, levels);
+                newForm.Show();
+                Close();
+            };
+            level2Point.Click += (sender, args) =>
+            {
+                Sublevel newForm = new Sublevel(2, levels);
+                newForm.Show();
+                Close();
+            };
+            level3Point.Click += (sender, args) =>
+            {
+                Sublevel newForm = new Sublevel(3, levels);
+                newForm.Show();
+                Close();
+            };
+            level4Point.Click += (sender, args) =>
+            {
+                Sublevel newForm = new Sublevel(4, levels);
+                newForm.Show();
+                Close();
+            };
+            level5Point.Click += (sender, args) =>
+            {
+                Sublevel newForm = new Sublevel(5, levels);
+                newForm.Show();
+                Close();
+            };
+            level2Point.Enabled = false;
+            level3Point.Enabled = false;
+            level4Point.Enabled = false;
+            level5Point.Enabled = false;
+            
             if (levels.Level1.Complete)
             {
+<<<<<<< HEAD
                 NumberOfLevel = 2;
                 level2Point.Click += LevelsPoint_Click;
             }
@@ -126,6 +175,21 @@ namespace ThiefWorld
             {
                 NumberOfLevel = 5;
                 level5Point.Click += LevelsPoint_Click;
+=======
+                level2Point.Enabled = true;
+            }
+            if (levels.Level2.Complete)
+            {
+                level3Point.Enabled = true;
+            }
+            if (levels.Level3.Complete)
+            {
+                level4Point.Enabled = true;
+            }
+            if (levels.Level4.Complete)
+            {
+                level5Point.Enabled = true;
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
             }
             Controls.Add(Menu);
             Controls.Add(level1Point);
@@ -133,6 +197,7 @@ namespace ThiefWorld
             Controls.Add(level3Point);
             Controls.Add(level4Point);
             Controls.Add(level5Point);
+<<<<<<< HEAD
             
         }
 
@@ -141,6 +206,8 @@ namespace ThiefWorld
             Sublevel newForm = new Sublevel(NumberOfLevel);
             newForm.Show();
             Close();
+=======
+>>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
         }
     }
 }

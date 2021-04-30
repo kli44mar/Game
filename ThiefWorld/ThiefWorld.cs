@@ -77,7 +77,7 @@ namespace ThiefWorld
 
             button3.Click += (sender, args) =>
             {
-                LevelMap newForm = new LevelMap();
+                LevelMap newForm = new LevelMap(new Interface.Levels());
                 newForm.Show();
             };
 
