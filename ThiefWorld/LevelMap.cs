@@ -14,10 +14,7 @@ namespace ThiefWorld
 {
     public partial class LevelMap : Form
     {
-        public Bitmap Circle=LevelsImages.Circle;
-<<<<<<< HEAD
         public PictureBox Menu;
-        private Graphics graphics;
         private int NumberOfLevel;
 
         private Levels levels;
@@ -27,33 +24,29 @@ namespace ThiefWorld
         public PictureBox level3Point;
         public PictureBox level4Point;
         public PictureBox level5Point;
-=======
+
         public PictureBox picture1;
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
 
         public LevelMap()
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
-<<<<<<< HEAD
+
             BackgroundImage = LevelsImages.LevelMapBackground;
             levels = new Levels();
             this.Load += LevelMap_Load;
-            //InitializeComponent(); 
         }
 
 
         private void LevelMap_Load(object sender, EventArgs e)
         {
             NumberOfLevel = 1;
-            level1Point = new PictureBox
-=======
+            
 
             BackgroundImage = LevelsImages.LevelMapBackground;
 
-            for (var i = 0; i<3; i++)
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
+            level1Point = new PictureBox
             {
                 Name = "1",
                 BackColor = Color.Transparent,
@@ -115,24 +108,24 @@ namespace ThiefWorld
             level1Point.Click += LevelsPoint_Click;
             if (levels.Level1.Complete)
             {
-                level2Point.Click += LevelsPoint_Click;
                 NumberOfLevel = 2;
+                level2Point.Click += LevelsPoint_Click;
             }
             if (levels.Level2.Complete)
             {
-                level3Point.Click += LevelsPoint_Click;
                 NumberOfLevel = 3;
+                level3Point.Click += LevelsPoint_Click;
             }
-<<<<<<< HEAD
+
             if (levels.Level3.Complete)
             {
-                level4Point.Click += LevelsPoint_Click;
                 NumberOfLevel = 4;
+                level4Point.Click += LevelsPoint_Click;
             }
             if (levels.Level4.Complete)
             {
-                level5Point.Click += LevelsPoint_Click;
                 NumberOfLevel = 5;
+                level5Point.Click += LevelsPoint_Click;
             }
             Controls.Add(Menu);
             Controls.Add(level1Point);
@@ -141,10 +134,6 @@ namespace ThiefWorld
             Controls.Add(level4Point);
             Controls.Add(level5Point);
             
-=======
-
-           
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
         }
 
         private void LevelsPoint_Click(object sender, EventArgs e)

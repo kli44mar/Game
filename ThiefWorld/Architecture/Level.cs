@@ -18,7 +18,7 @@ namespace ThiefWorld.Architecture
         public Issue Issue;
         public bool Complete;
 
-        public Level(Dictionary<string, string> mathExamples, List<List<string>> sequences, string conditionOfIssue, string answerOfIssue, int levelNumber, List<string> clothes, Level previous)
+        public Level(Dictionary<string, string> mathExamples, List<string> sequences, string conditionOfIssue, string answerOfIssue, int levelNumber, List<string> clothes, Level previous)
         {
             this.LevelNumber = levelNumber;
             this.Points = 0;
