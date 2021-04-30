@@ -18,14 +18,14 @@ namespace ThiefWorld.Architecture
         public Issue Issue;
         public bool Complete;
 
-        public Level(Dictionary<string, string> mathExamples, List<List<string>> sequences, string conditionOfIssue, string answerOfIssue, int levelNumber, List<string> clothes, Level previous)
+        public Level(IReadOnlyDictionary<(int, string), string> mathExamples, int countOfExamples, List<string> sequences, int countOfSequences, Dictionary<string, string> issues, int levelNumber, List<string> clothes, Level previous)
         {
             this.LevelNumber = levelNumber;
             this.Points = 0;
             this.AvailableClothes = clothes;
-            this.MathExamples = new MathematicalExamples(mathExamples);
-            this.Sequences = new Sequences(sequences);
-            this.Issue = new Issue(conditionOfIssue, answerOfIssue);
+            this.MathExamples = new MathematicalExamples(mathExamples, countOfExamples);
+            this.Sequences = new Sequences(sequences, countOfSequences);
+            this.Issue = new Issue(issues);
             this.Complete = false;
             this.PreviousLevel = previous;
         }
@@ -40,6 +40,11 @@ namespace ThiefWorld.Architecture
         {
             this.Complete = false;
             this.Points = 0;
+        }
+
+        public void ChangePoints()
+        {
+            Points = this.MathExamples.Score + this.Sequences.Score + this.Issue.Score;
         }
     }
 }

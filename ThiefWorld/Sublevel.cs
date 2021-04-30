@@ -15,50 +15,19 @@ namespace ThiefWorld
 {
     public partial class Sublevel : Form
     {
-<<<<<<< HEAD
-        public Levels Levels = new Levels();
+        public Levels Levels;
         public Level level;
-        DateTime time = DateTime.Now.AddMinutes(5);
-        Timer timer = new Timer();
-=======
-        public Levels Level;
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
         List<string> example = new List<string>();
         Label label1 = new Label();
 
-<<<<<<< HEAD
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            var min = time - DateTime.Now;
-            if (DateTime.Now == time)
-                timer.Stop();
-            var label = new Label
-            {
-                Location = new Point(ClientSize.Width / 2 + 100, 60),
-                Font = new Font("Tahoma", 16, FontStyle.Bold),
-                Size = new Size(250, 60),
-                FlatStyle = FlatStyle.Flat,
-                Padding = new Padding (5, 10, 5, 5),
-                BackColor = Color.FromArgb(255, 255, 192),
-                Text = "Время: " + min.Minutes.ToString() + ":" + min.Seconds.ToString()
-            };
-            Controls.Add(label);
-        }
-        public Sublevel(int numberOfLevel)
-=======
-        public Sublevel(Levels Level)
-        {
-            this.Level = Level;
-        }
-   
-        public Sublevel()
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
+        public Sublevel(int numberOfLevel, Levels levels)
         {
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
             Size = MaximumSize;
             DoubleBuffered = true;
+            this.Levels = levels;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
             var button = new Button
@@ -73,11 +42,10 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
-<<<<<<< HEAD
-                var newForm = new LevelMap();
-=======
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
+                var newForm = new LevelMap(levels);
+                newForm.Show();
                 Close();
+
             };
 
             var button2 = new Button
@@ -135,22 +103,19 @@ namespace ThiefWorld
                         BackColor = label.BackColor,
                         Font = label.Font
                     };
-<<<<<<< HEAD
                     button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example.Value; // 
-=======
                     button2.Click += (sender, args) => {
                         box.Enabled=false;
                         box.BackColor = Color.Red;
                         box.Text = "Ответ: " + box.Text;
                     }; 
->>>>>>> 9fd460cfc16674beba90ce9bc34491ce0caa9168
                     Controls.Add(box);
                     Controls.Add(button2);
                     Controls.Add(label);
                     i++;
                 }
             };
-
+            
             var button3 = new Button
             {
                 Location = new Point(40, 380),

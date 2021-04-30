@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ThiefWorld.Architecture
 {
     public class Issue
     {
-        public string Condition { get; private set; }
-        public string Answer { get; private set; }
+        public Dictionary<string, string> Issues { get; private set; }
         public int Score { get; private set; }
 
-        public Issue(string condition, string answer)
+        public Issue(Dictionary<string, string> issues)
         {
-            this.Condition = condition;
-            this.Answer = answer;
+            this.Issues = issues;
         }
 
-        public bool CompareResult(string playerAnswer)
+        public (string, string) GetIssue()
         {
-            if (playerAnswer.Equals(Answer))
+            var random = new Random();
+            var condition = Issues.Keys.ToList()[random.Next(0, 1)];
+            return (condition, Issues[condition]);
+        }
+
+        public bool CompareResult(string condition, string playerAnswer)
+        {
+            if (playerAnswer.Equals(Issues[condition]))
                 Score += 120;
-            return playerAnswer.Equals(Answer);
+            return playerAnswer.Equals(Issues[condition]);
         }
     }
 }
