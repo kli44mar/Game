@@ -15,29 +15,23 @@ namespace ThiefWorld
 {
     public partial class Sublevel : Form
     {
-<<<<<<< HEAD
         List<Button> extraButtons = new List<Button>();
         List<Label> extraLabels = new List<Label>();
         List<TextBox> extraBox = new List<TextBox>();
         public Levels Levels = new Levels();
-        public Level level;
         Label label1 = new Label();
-        public Sublevel(int numberOfLevel)
-=======
-        public Levels Levels;
-        public Level level;
-        List<string> example = new List<string>();
-        Label label1 = new Label();
+        private Level level;
+        private int Difficalty;
 
         public Sublevel(int numberOfLevel, Levels levels)
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
-        {
+        { 
+
+            this.Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
             Size = MaximumSize;
             DoubleBuffered = true;
-            this.Levels = levels;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
 
@@ -61,6 +55,7 @@ namespace ThiefWorld
             };
             buttonCentr1.Click += (sender, args) =>
             {
+                Difficalty = 1;
             };
             var buttonCentr2 = new Button
             {
@@ -73,6 +68,7 @@ namespace ThiefWorld
             };
             buttonCentr2.Click += (sender, args) =>
             {
+                Difficalty = 2;
             };
             var buttonCentr3 = new Button
             {
@@ -85,6 +81,7 @@ namespace ThiefWorld
             };
             buttonCentr3.Click += (sender, args) =>
             {
+                Difficalty = 3;
             };
             Controls.Add(buttonCentr2);
             Controls.Add(labelCentr);
@@ -106,11 +103,7 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
-<<<<<<< HEAD
-                var newForm = new LevelMap();
-=======
-                var newForm = new LevelMap(levels);
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
+                var newForm = new LevelMap(Levels);
                 newForm.Show();
                 Close();
 
@@ -141,67 +134,10 @@ namespace ThiefWorld
             var issue = level.Issue;
             button22.Click += (sender, args) =>
             {
-<<<<<<< HEAD
                 Clear();
-                GetEx(0);
-=======
-                if (numberOfLevel == 1)
-                    level = Levels.Level1;
-                if (numberOfLevel == 2)
-                    level = Levels.Level2;
-                if (numberOfLevel == 3)
-                    level = Levels.Level3;
-                if (numberOfLevel == 4)
-                    level = Levels.Level4;
-                if (numberOfLevel == 5)
-                    level = Levels.Level5;
-                //AddExamples();
-                var mathExamples = level.MathExamples;
-                //for (var i = 0; i < mathExamples.MathExamples.Count; i++)
-                var i = 0;
-                foreach (var example in mathExamples.MathExamples)
-                {
-                    var label = new Label
-                    {
-                        Location = new Point(ClientSize.Width / 2 - 100, 250 + 80 * i),
-                        Size = new Size(400, 50),
-                        Text = "Введите ответ: " + example.Key,
-                        FlatStyle = FlatStyle.Flat,
-                        Font = new Font("Tahoma", 10, FontStyle.Bold),
-                        BackColor = Color.Transparent
-                    };
-
-                    var box = new TextBox
-                    {
-                        Location = new Point(ClientSize.Width / 2 + 340, 250 + 80 * i),
-                        Size = new Size(180, 300),
-                        BackColor = Color.White,
-                        Font = label.Font
-
-                    };
-                    var button2 = new Button
-                    {
-                        Location = new Point(ClientSize.Width / 2 + 550, 240 + 80 * i),
-                        Size = new Size(130, 60),
-                        Text = "Ответить",
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = label.BackColor,
-                        Font = label.Font
-                    };
-                    button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example.Value; // 
-                    button2.Click += (sender, args) => {
-                        box.Enabled=false;
-                        box.BackColor = Color.Red;
-                        box.Text = "Ответ: " + box.Text;
-                    }; 
-                    Controls.Add(box);
-                    Controls.Add(button2);
-                    Controls.Add(label);
-                    i++;
-                }
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
+                GetEx(0,Difficalty - 1, true);
             };
-            
+
             var button3 = new Button
             {
                 Location = new Point(40, 380),
@@ -229,13 +165,14 @@ namespace ThiefWorld
             button4.Click += (sender, args) =>
             {
                 Clear();
+                var needIssue = issue.GetIssue();
                 var label = new Label
                 {
                     Location = new Point(ClientSize.Width / 2 - 100, 400),
                     Size = new Size(800, 100),
-                    Text = "Отгадайте загадку: " + issue.Condition,
+                    Text = "Отгадайте загадку: " + needIssue.Item1,
                     FlatStyle = FlatStyle.Flat,
-                    Font = new Font("Tahoma", 14, FontStyle.Bold),
+                    Font = new Font("Tahoma", 12, FontStyle.Bold),
                     BackColor = Color.Transparent
                 };
                 var box = new TextBox
@@ -258,7 +195,7 @@ namespace ThiefWorld
                 button2.Click += (sender, args) =>
                 {
                     box.Enabled = false;
-                    box.Text = "Ответ: " + issue.Answer;
+                    box.Text = "Ответ: " + needIssue.Item2;
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
@@ -287,14 +224,14 @@ namespace ThiefWorld
 
         private int GetIs(int i)
         {
-            var example = new List<string> { "1adf", "e2fd", "rrr3", "kj4", "kl5" };
+            var example = level.Sequences.GetNextSequence();
             var label = new Label
             {
                 Location = new Point(ClientSize.Width / 2 - 100, 350),
                 Size = new Size(700, 50),
-                Text = "Запомните последовательность за 15 сек " + String.Join(", ", example.ToArray()),
+                Text = "Запомните последовательность за 15 сек: " + example.Item2,
                 FlatStyle = FlatStyle.Flat,
-                Font = new Font("Tahoma", 14, FontStyle.Bold),
+                Font = new Font("Tahoma", 10, FontStyle.Bold),
                 BackColor = Color.Transparent
             };
             var button = new Button
@@ -306,6 +243,10 @@ namespace ThiefWorld
                 BackColor = Color.Transparent,
                 Font = new Font("Tahoma", 10, FontStyle.Bold)
             };
+            Controls.Add(label);
+            Controls.Add(button);
+            extraLabels.Add(label);
+            extraButtons.Add(button);
             button.Click += (sender, args) =>
             {
                 Clear();
@@ -327,9 +268,11 @@ namespace ThiefWorld
                 };
                 button2.Click += (sender, args) =>
                 {
+                    var answer = box.Text;
+                    
                     box.Enabled = false;
-                    box.Text = "Ответ: " + String.Join(", ", example.ToArray());
-                    if (i < 8)
+                    box.Text = "Ответ: " + level.Sequences.CompareResult(example.Item1, answer);
+                    if (i < level.Sequences.CountOfSequences)
                         GetIs(i);
                 };
                 Controls.Add(button2);
@@ -339,22 +282,20 @@ namespace ThiefWorld
                 i++;
 
             };
-            Controls.Add(label);
-            Controls.Add(button);
-            extraLabels.Add(label);
-            extraButtons.Add(button);
+           
             return i;
         }
 
-        private int GetEx(int i)
+        private int GetEx(int i, int difficalty, bool correctResult)
         {
-            var example = "22+444";
+            var example = level.MathExamples.GetNextExample(difficalty, correctResult);
+            difficalty = example.Item1.Item1;
             //var i = 0;
             var label = new Label
             {
                 Location = new Point(ClientSize.Width / 2 - 100, 250 + 80 * i),
                 Size = new Size(400, 50),
-                Text = "Введите ответ: " + example,
+                Text = "Введите ответ: " + example.Item1.Item2,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Tahoma", 10, FontStyle.Bold),
                 BackColor = Color.Transparent
@@ -380,10 +321,16 @@ namespace ThiefWorld
             button2.Click += (sender, args) =>
             {
                 box.Enabled = false;
-                box.Text = "Ответ: " + example;
+                var answer = box.Text;
+                box.Text = "Ответ: " + example.Item2;
                 i++;
-                if (i<8)
-                    GetEx(i);
+                if (i < level.MathExamples.CountOfExamples)
+                {
+                    if (level.MathExamples.CompareResult(example.Item1, answer))
+                        GetEx(i, difficalty, true);
+                    else
+                        GetEx(i, difficalty, false);
+                }
 
             };
 

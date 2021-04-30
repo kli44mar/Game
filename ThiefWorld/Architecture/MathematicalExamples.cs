@@ -30,7 +30,7 @@ namespace ThiefWorld.Architecture
             this.PointsForMediumExample = 20;
             this.PointsForHardExample = 30;
             this.Difficalty = DifficaltyOfExamples.Easy;
-            this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int>();
+            this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int> { [DifficaltyOfExamples.Easy] = 0, [DifficaltyOfExamples.Hard] = 0, [DifficaltyOfExamples.Medium] = 0 };
             this.UsedExamples = new List<(int, string)>();
             this.CountOfExamples = countOfExamples;
         }
@@ -48,18 +48,18 @@ namespace ThiefWorld.Architecture
             {
                 if (difficalty < 3)
                     difficalty = (difficalty + 1);
-                if (difficalty == 3 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 3 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 2;
-                if (difficalty == 2 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 2 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 1;
             }
             else
             {
                 if (difficalty > 1)
                     difficalty = (difficalty - 1);
-                if (difficalty == 1 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 1 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 2;
-                if (difficalty == 2 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 2 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 3;
             }
             var difficaltyOfExample = (DifficaltyOfExamples)(difficalty);
