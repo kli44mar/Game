@@ -15,22 +15,15 @@ namespace ThiefWorld
 {
     public partial class Sublevel : Form
     {
-<<<<<<< HEAD
         List<Button> extraButtons = new List<Button>();
         List<Label> extraLabels = new List<Label>();
         List<TextBox> extraBox = new List<TextBox>();
         public Levels Levels = new Levels();
         public Level level;
         Label label1 = new Label();
-        public Sublevel(int numberOfLevel)
-=======
-        public Levels Levels;
-        public Level level;
         List<string> example = new List<string>();
-        Label label1 = new Label();
 
         public Sublevel(int numberOfLevel, Levels levels)
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
         {
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
@@ -106,11 +99,7 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
-<<<<<<< HEAD
-                var newForm = new LevelMap();
-=======
-                var newForm = new LevelMap(levels);
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
+                var newForm = new LevelMap(Levels);
                 newForm.Show();
                 Close();
 
@@ -125,7 +114,6 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 192)
             };
-            ///---------
             if (numberOfLevel == 1)
                 level = Levels.Level1;
             if (numberOfLevel == 2)
@@ -141,67 +129,10 @@ namespace ThiefWorld
             var issue = level.Issue;
             button22.Click += (sender, args) =>
             {
-<<<<<<< HEAD
                 Clear();
                 GetEx(0);
-=======
-                if (numberOfLevel == 1)
-                    level = Levels.Level1;
-                if (numberOfLevel == 2)
-                    level = Levels.Level2;
-                if (numberOfLevel == 3)
-                    level = Levels.Level3;
-                if (numberOfLevel == 4)
-                    level = Levels.Level4;
-                if (numberOfLevel == 5)
-                    level = Levels.Level5;
-                //AddExamples();
-                var mathExamples = level.MathExamples;
-                //for (var i = 0; i < mathExamples.MathExamples.Count; i++)
-                var i = 0;
-                foreach (var example in mathExamples.MathExamples)
-                {
-                    var label = new Label
-                    {
-                        Location = new Point(ClientSize.Width / 2 - 100, 250 + 80 * i),
-                        Size = new Size(400, 50),
-                        Text = "Введите ответ: " + example.Key,
-                        FlatStyle = FlatStyle.Flat,
-                        Font = new Font("Tahoma", 10, FontStyle.Bold),
-                        BackColor = Color.Transparent
-                    };
-
-                    var box = new TextBox
-                    {
-                        Location = new Point(ClientSize.Width / 2 + 340, 250 + 80 * i),
-                        Size = new Size(180, 300),
-                        BackColor = Color.White,
-                        Font = label.Font
-
-                    };
-                    var button2 = new Button
-                    {
-                        Location = new Point(ClientSize.Width / 2 + 550, 240 + 80 * i),
-                        Size = new Size(130, 60),
-                        Text = "Ответить",
-                        FlatStyle = FlatStyle.Flat,
-                        BackColor = label.BackColor,
-                        Font = label.Font
-                    };
-                    button2.Click += (sender, args) => box.Text = "Правильный ответ: " + example.Value; // 
-                    button2.Click += (sender, args) => {
-                        box.Enabled=false;
-                        box.BackColor = Color.Red;
-                        box.Text = "Ответ: " + box.Text;
-                    }; 
-                    Controls.Add(box);
-                    Controls.Add(button2);
-                    Controls.Add(label);
-                    i++;
-                }
->>>>>>> 18269f6a93397a2d4c29128ec467baf25badc0af
             };
-            
+             
             var button3 = new Button
             {
                 Location = new Point(40, 380),
@@ -228,14 +159,15 @@ namespace ThiefWorld
             };
             button4.Click += (sender, args) =>
             {
+                var needIssue = issue.GetIssue();
                 Clear();
                 var label = new Label
                 {
                     Location = new Point(ClientSize.Width / 2 - 100, 400),
                     Size = new Size(800, 100),
-                    Text = "Отгадайте загадку: " + issue.Condition,
+                    Text = "Отгадайте загадку: " +  needIssue.Item1,
                     FlatStyle = FlatStyle.Flat,
-                    Font = new Font("Tahoma", 14, FontStyle.Bold),
+                    Font = new Font("Tahoma", 10, FontStyle.Bold),
                     BackColor = Color.Transparent
                 };
                 var box = new TextBox
@@ -258,7 +190,7 @@ namespace ThiefWorld
                 button2.Click += (sender, args) =>
                 {
                     box.Enabled = false;
-                    box.Text = "Ответ: " + issue.Answer;
+                    box.Text = "Ответ: " + needIssue.Item2;
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
