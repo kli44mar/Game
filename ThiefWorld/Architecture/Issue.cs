@@ -18,7 +18,7 @@ namespace ThiefWorld.Architecture
         public (string, string) GetIssue()
         {
             var random = new Random();
-            var condition = Issues.Keys.ToList()[random.Next(0, 1)];
+            var condition = Issues.Keys.ToList()[random.Next(0, 2)];
             return (condition, Issues[condition]);
         }
 

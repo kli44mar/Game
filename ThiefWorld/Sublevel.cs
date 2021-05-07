@@ -21,7 +21,7 @@ namespace ThiefWorld
         public Levels Levels = new Levels();
         Label label1 = new Label();
         private Level level;
-        private int Difficalty;
+        private int Difficalty = 1;
 
         public Sublevel(int numberOfLevel, Levels levels)
         { 
@@ -82,7 +82,7 @@ namespace ThiefWorld
             buttonCentr3.Click += (sender, args) =>
             {
                 Difficalty = 3;
-            };
+            }; 
             Controls.Add(buttonCentr2);
             Controls.Add(labelCentr);
             Controls.Add(buttonCentr3);
@@ -136,6 +136,7 @@ namespace ThiefWorld
             {
                 Clear();
                 GetEx(0,Difficalty - 1, true);
+              
             };
 
             var button3 = new Button

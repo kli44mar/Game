@@ -42,8 +42,6 @@ namespace ThiefWorld.Architecture
 
         public ((int, string), string) GetNextExample(int difficalty, bool correctnessOfResult)
         {
-            if (difficalty < 1 || difficalty > 3)
-                throw new ArgumentException();
             if (correctnessOfResult)
             {
                 if (difficalty < 3)
