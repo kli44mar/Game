@@ -18,8 +18,11 @@ namespace ThiefWorld
         private readonly Button button3;
         private readonly Label label;
         private readonly PictureBox pictureBox1;
-        public ThiefWorld()
+        private readonly Character Player;
+
+        public ThiefWorld(Character player)
         {
+            this.Player = player;
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
@@ -33,9 +36,9 @@ namespace ThiefWorld
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
                 " Единственный способ зароботать деньги -  проходить уровни.",
                 Size = new Size(700, 200),
-                Font = new Font("Tahoma", 14),
+                Font = new Font("Tahoma", 12),
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(255, 255, 210)
+                BackColor = Color.FromArgb(255, 239, 172)
             };
 
 
@@ -46,7 +49,7 @@ namespace ThiefWorld
                 Font = new Font("Tahoma", 16),
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
-                BackColor = Color.FromArgb(255, 255, 192)
+                BackColor = Color.FromArgb(255, 239, 172)
             };
             
 
@@ -57,7 +60,7 @@ namespace ThiefWorld
                 Font = button.Font,
                 FlatStyle = FlatStyle.Flat,
                 Size = button.Size,
-                BackColor = Color.FromArgb(255, 255, 192)
+                BackColor = Color.FromArgb(255, 239, 172)
             };
 
             button3 = new Button
@@ -67,7 +70,7 @@ namespace ThiefWorld
                 Font = new Font("Tahoma", 20, FontStyle.Bold),
                 FlatStyle = FlatStyle.Flat,
                 Size = new Size(220, 150),
-                BackColor = Color.FromArgb(255, 255, 180)
+                BackColor = Color.FromArgb(255, 239, 172)
             };
 
             button2.Click += (sender, args) =>
@@ -77,7 +80,7 @@ namespace ThiefWorld
 
             button3.Click += (sender, args) =>
             {
-                LevelMap newForm = new LevelMap(new Interface.Levels());
+                LevelMap newForm = new LevelMap(new Interface.Levels(), player);
                 newForm.Show();
             };
 

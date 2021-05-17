@@ -7,11 +7,13 @@ namespace ThiefWorld.Architecture
 {
     public class Sequences
     {
+
         public IReadOnlyList<string> SequenceList { get; private set; }
         public int Score { get; private set; }
         public int PointsForExample { get; private set; }
         public int CountOfSequences { get; private set; }
         private List<string> UsedSequences;
+
 
         public Sequences(List<string> sequences, int countOfSequences)
         {
@@ -21,18 +23,19 @@ namespace ThiefWorld.Architecture
             this.UsedSequences = new List<string>();
         }
 
-        public string GetNextSequence()
+        public (int, string) GetNextSequence()
         {
             var random = new Random();
             var newList = SequenceList.Where(x => !UsedSequences.Contains(x));
-            var result = newList.ToList()[random.Next(0, newList.Count())];
+            var rnd = random.Next(0, newList.Count());
+            var result = newList.ToList()[rnd];
             UsedSequences.Add(result);
-            return result;
+            return (rnd, result);
         }
 
         public bool CompareResult(int numberOfSequence, string sequence)
         {
-            if (numberOfSequence >= SequenceList.Count || sequence.Length != SequenceList[numberOfSequence].Length)
+            if (numberOfSequence >= SequenceList.Count )
                 throw new ArgumentException();
             if (sequence.Equals(SequenceList[numberOfSequence]))
             {

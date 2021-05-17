@@ -7,9 +7,10 @@ namespace ThiefWorld.Interface
 {
     public static class Helpers
     {
-        public static readonly IReadOnlyDictionary<string, string> OutfitToFileMap = new Dictionary<string, string>()
-        {
-            [Outfit.Initial] = "Initial.png"
-        };
+        public static readonly IReadOnlyDictionary<string, string> OutfitToFileMap
+            = new Dictionary<string, string>()
+            {
+                [Outfit.Initial] = "Initial.png"
+            };
     }
 }

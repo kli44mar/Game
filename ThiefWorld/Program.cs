@@ -14,11 +14,12 @@ namespace ThiefWorld
         [STAThread]
         static void Main()
         {
+            var player = new Character("Leo");
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ThiefWorld());
-            //Application.Run(new LevelMap());
+            Application.Run(new ThiefWorld(player));
+            //Application.Run(new LevelMap(new Interface.Levels(), player));
         }
 
         /**

@@ -30,7 +30,7 @@ namespace ThiefWorld.Architecture
             this.PointsForMediumExample = 20;
             this.PointsForHardExample = 30;
             this.Difficalty = DifficaltyOfExamples.Easy;
-            this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int>();
+            this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int> { [DifficaltyOfExamples.Easy] = 0, [DifficaltyOfExamples.Hard] = 0, [DifficaltyOfExamples.Medium] = 0 };
             this.UsedExamples = new List<(int, string)>();
             this.CountOfExamples = countOfExamples;
         }
@@ -42,24 +42,22 @@ namespace ThiefWorld.Architecture
 
         public ((int, string), string) GetNextExample(int difficalty, bool correctnessOfResult)
         {
-            if (difficalty < 1 || difficalty > 3)
-                throw new ArgumentException();
             if (correctnessOfResult)
             {
                 if (difficalty < 3)
                     difficalty = (difficalty + 1);
-                if (difficalty == 3 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 3 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 2;
-                if (difficalty == 2 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 2 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 1;
             }
             else
             {
                 if (difficalty > 1)
                     difficalty = (difficalty - 1);
-                if (difficalty == 1 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 1 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 2;
-                if (difficalty == 2 && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
+                if (difficalty == 2 && CountOfUsedExamples.ContainsKey((DifficaltyOfExamples)(difficalty)) && CountOfUsedExamples[(DifficaltyOfExamples)(difficalty)] == MathExamples.Count / 3)
                     difficalty = 3;
             }
             var difficaltyOfExample = (DifficaltyOfExamples)(difficalty);
@@ -80,13 +78,13 @@ namespace ThiefWorld.Architecture
             if (this.MathExamples[example] == result)
             {
                 if (example.Item1 == 1)
-                    this.Score += PointsForEasyExample;
+                    Score += PointsForEasyExample;
                 if (example.Item1 == 2)
-                    this.Score += PointsForMediumExample;
+                    Score += PointsForMediumExample;
                 if (example.Item1 == 3)
-                    this.Score += PointsForHardExample;
+                    Score += PointsForHardExample;
             }
-            return (this.MathExamples[example] == result);
+            return MathExamples[example] == result;
         }
     }
 }

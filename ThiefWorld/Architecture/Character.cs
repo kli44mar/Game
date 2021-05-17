@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,16 @@ namespace ThiefWorld
         {
             this.OutfitName = outfit;
             this.Money -= price;
+        }
+
+        public string Serialize()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static Character Deserialize(string json)
+        {
+            return JsonConvert.DeserializeObject<Character>(json);
         }
     }
 }

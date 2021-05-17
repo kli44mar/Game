@@ -15,6 +15,8 @@ namespace ThiefWorld
     public partial class LevelMap : Form
     {
         public PictureBox Menu;
+        //private int NumberOfLevel;
+        private Character Player;
 
         private Levels levels;
 
@@ -23,23 +25,26 @@ namespace ThiefWorld
         public PictureBox level3Point;
         public PictureBox level4Point;
         public PictureBox level5Point;
+        public PictureBox Money;
+        private Label MoneyCount;
 
         public PictureBox picture1;
 
-        public LevelMap(Levels levels)
+        public LevelMap(Levels levels, Character player)
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             BackgroundImage = LevelsImages.LevelMapBackground;
             this.levels = levels;
-            this.Load += LevelMap_Load;
+            Player = player;
+            Load += LevelMap_Load;
+            
         }
 
 
         private void LevelMap_Load(object sender, EventArgs e)
         {
-            //BackgroundImage = LevelsImages.LevelMapBackground;
             level1Point = new PictureBox
             {
                 Name = "1",
@@ -93,39 +98,72 @@ namespace ThiefWorld
                 Size = new Size(200,200),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
+            Money = new PictureBox
+            {
+                BackColor = Color.Transparent,
+                Image = LevelsImages.money,
+                Location = new Point(1660, 850),
+                Size = new Size(150, 150),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+            /*Money.Paint += new PaintEventHandler((sender, e) =>
+             {
+                 e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                 var font = new Font(SystemFonts.DefaultFont.FontFamily, 12, FontStyle.Regular);
+                 string text = this.Player.Money.ToString();
+                 var textSize = e.Graphics.MeasureString(text, Font);
+                 var location = new PointF(Money.Width / 11 * 6 - textSize.Width / 2, Money.Height / 12 * 7 - textSize.Height / 2);
+                 e.Graphics.DrawString(text, font, Brushes.Black, location);
+             });*/
+            MoneyCount = new Label
+            {
+                BackColor = Color.Transparent,
+                Location = new Point(1810, 902),
+                Size = new Size(200, 200),
+                Text = Player.Money.ToString(),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Arial", 18, FontStyle.Bold),
+                //Image = LevelsImages.money
+            };
+            //Graphics g = Graphics.FromImage(Money.Image);
+            //g.DrawString("0", new Font("Arial", 10), Brushes.Black, 0, 0);
+            //MoneyCount.Parent = Money;
+            //Money.Controls.Add(MoneyCount);
+            //MoneyCount.BringToFront();
             Menu.Click += (sender, args) =>
             {
-                  var initial = new ThiefWorld();
+                  var initial = new ThiefWorld(Player);
                   Close();
                   initial.Show();
             };
             level1Point.Click += (sender, args)=>
             {
-                Sublevel newForm = new Sublevel(1, levels);
+                Sublevel newForm = new Sublevel(1, levels, Player);
                 newForm.Show();
                 Close();
             };
             level2Point.Click += (sender, args) =>
             {
-                Sublevel newForm = new Sublevel(2, levels);
+                Sublevel newForm = new Sublevel(2, levels, Player);
                 newForm.Show();
                 Close();
             };
             level3Point.Click += (sender, args) =>
             {
-                Sublevel newForm = new Sublevel(3, levels);
+                Sublevel newForm = new Sublevel(3, levels, Player);
                 newForm.Show();
                 Close();
             };
             level4Point.Click += (sender, args) =>
             {
-                Sublevel newForm = new Sublevel(4, levels);
+                Sublevel newForm = new Sublevel(4, levels, Player);
                 newForm.Show();
                 Close();
             };
             level5Point.Click += (sender, args) =>
             {
-                Sublevel newForm = new Sublevel(5, levels);
+                Sublevel newForm = new Sublevel(5, levels, Player);
                 newForm.Show();
                 Close();
             };
@@ -152,11 +190,16 @@ namespace ThiefWorld
                 
             }
             Controls.Add(Menu);
-                Controls.Add(level1Point);
-                Controls.Add(level2Point);
-                Controls.Add(level3Point);
-                Controls.Add(level4Point);
-                Controls.Add(level5Point);
+            Controls.Add(Money);
+            //Money.Controls.Add(MoneyCount);
+            Controls.Add(MoneyCount);
+            //MoneyCount.Parent = Money;
+            //MoneyCount.BringToFront();
+            Controls.Add(level1Point);
+            Controls.Add(level2Point);
+            Controls.Add(level3Point);
+            Controls.Add(level4Point);
+            Controls.Add(level5Point);
         }
     }
 }
