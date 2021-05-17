@@ -98,9 +98,7 @@ namespace ThiefWorld
             };
             Menu.Click += (sender, args) =>
             {
-                  var initial = new ThiefWorld();
                   Close();
-                  initial.Show();
             };
             level1Point.Click += (sender, args)=>
             {
