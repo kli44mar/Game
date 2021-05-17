@@ -21,6 +21,7 @@ namespace ThiefWorld
         public Levels Levels;
         Label label1 = new Label();
         private Level level;
+<<<<<<< HEAD
         private int Difficalty;
         private Character Player;
 
@@ -29,6 +30,15 @@ namespace ThiefWorld
             Difficalty = 1;
             Levels = levels;
             Player = player;
+=======
+        private int Difficalty = 1;
+        Button button4 = new Button();
+        Button button3 = new Button();
+        public Sublevel(int numberOfLevel, Levels levels)
+        { 
+
+            this.Levels = levels;
+>>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -85,14 +95,25 @@ namespace ThiefWorld
             {
                 Difficalty = 3;
             };
+            var labelCentr2 = new Label
+            {
+                Location = new Point(1050, 750),
+                Size = new Size(700, 50),
+                Text = @"И нажмите на кнопку ""Примеры""",
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Tahoma", 14, FontStyle.Bold),
+                BackColor = Color.Transparent
+            };
             Controls.Add(buttonCentr2);
             Controls.Add(labelCentr);
+            Controls.Add(labelCentr2);
             Controls.Add(buttonCentr3);
             Controls.Add(buttonCentr1);
             extraButtons.Add(buttonCentr1);
             extraButtons.Add(buttonCentr2);
             extraButtons.Add(buttonCentr3);
             extraLabels.Add(labelCentr);
+            extraLabels.Add(labelCentr2);
             var button = new Button
             {
                 Location = new Point(40, 40),
@@ -138,13 +159,19 @@ namespace ThiefWorld
             var issue = level.Issue;
             button22.Click += (sender, args) =>
             {
+                button3.Enabled = false;
+                button4.Enabled = false;
                 Clear();
                 GetEx(0,Difficalty - 1, true);
+<<<<<<< HEAD
                 //Player.AfterSublevel(676);
                 //Player.AfterSublevel(level.MathExamples.Score);
+=======
+              
+>>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
-            var button3 = new Button
+            button3 = new Button
             {
                 Location = new Point(40, 380),
                 Text = "Последовательность",
@@ -155,13 +182,15 @@ namespace ThiefWorld
             };
             button3.Click += (sender, args) =>
             {
+                button22.Enabled = false;
+                button4.Enabled = false;
                 Clear();
                 GetIs(0);
                 //Console.WriteLine(level.Sequences.Score);
                 //Player.AfterSublevel(level.Sequences.Score);
             };
            
-            var button4 = new Button
+            button4 = new Button
             {
                 Location = new Point(40, 540),
                 Text = "Загадка",
@@ -172,6 +201,8 @@ namespace ThiefWorld
             };
             button4.Click += (sender, args) =>
             {
+                button22.Enabled = false;
+                button3.Enabled = false;
                 Clear();
                 var needIssue = issue.GetIssue();
                 var label = new Label
@@ -234,12 +265,13 @@ namespace ThiefWorld
 
         private int GetIs(int i)
         {
+            Clear();
             var example = level.Sequences.GetNextSequence();
             var label = new Label
             {
                 Location = new Point(ClientSize.Width / 2 - 100, 350),
                 Size = new Size(700, 50),
-                Text = "Запомните последовательность за 15 сек: " + example.Item2,
+                Text = "Запомните последовательность: " + example.Item2,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Tahoma", 10, FontStyle.Bold),
                 BackColor = Color.Transparent
@@ -257,8 +289,10 @@ namespace ThiefWorld
             Controls.Add(button);
             extraLabels.Add(label);
             extraButtons.Add(button);
+            
             button.Click += (sender, args) =>
             {
+                
                 Clear();
                 var box = new TextBox
                 {
@@ -279,20 +313,30 @@ namespace ThiefWorld
                 button2.Click += (sender, args) =>
                 {
                     var answer = box.Text;
-                    
                     box.Enabled = false;
-                    box.Text = "Ответ: " + level.Sequences.CompareResult(example.Item1, answer);
+                    if (level.Sequences.CompareResult(example.Item1, answer))
+                    {
+                        box.Text = "Ответ: " + "правильно";
+                    }
+                    else
+                        box.Text = "Ответ: " + "неправильно";
+                    
                     if (i < level.Sequences.CountOfSequences)
                         GetIs(i);
+                    else
+                        button4.Enabled = true;
                 };
                 Controls.Add(button2);
                 Controls.Add(box);
+                
                 extraButtons.Add(button2);
                 extraBox.Add(box);
                 i++;
-
+                
             };
-           
+            
+            extraButtons.Add(button);
+            extraLabels.Add(label);
             return i;
         }
 
@@ -300,7 +344,6 @@ namespace ThiefWorld
         {
             var example = level.MathExamples.GetNextExample(difficalty, correctResult);
             difficalty = example.Item1.Item1;
-            //var i = 0;
             var label = new Label
             {
                 Location = new Point(ClientSize.Width / 2 - 100, 250 + 80 * i),
@@ -343,6 +386,12 @@ namespace ThiefWorld
                     else
                         GetEx(i, difficalty, false);
                 }
+<<<<<<< HEAD
+=======
+                else
+                    button3.Enabled = true;
+
+>>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
             Controls.Add(box);
@@ -384,7 +433,7 @@ namespace ThiefWorld
 
         private async void StartTimer()
         {
-            TimeSpan ts = new TimeSpan(0, 8, 0);
+            TimeSpan ts = new TimeSpan(0, 10, 0);
             while (ts > TimeSpan.Zero)
             {
                 label1.Text = ts.ToString();
