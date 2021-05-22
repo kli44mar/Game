@@ -133,10 +133,6 @@ namespace ThiefWorld
             //MoneyCount.BringToFront();
             Menu.Click += (sender, args) =>
             {
-<<<<<<< HEAD
-                  var initial = new ThiefWorld(Player);
-=======
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
                   Close();
             };
             level1Point.Click += (sender, args)=>

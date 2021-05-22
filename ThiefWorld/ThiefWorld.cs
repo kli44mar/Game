@@ -87,7 +87,7 @@ namespace ThiefWorld
             pictureBox1 = new PictureBox
             {
                 BackColor = Color.Transparent,
-                Image = Properties.Resources.Initial,
+                Image = Properties.Resources._02_2,
                 Location = new Point(26, 279),
                 Size = new Size(400, 575),
                 SizeMode = PictureBoxSizeMode.Zoom

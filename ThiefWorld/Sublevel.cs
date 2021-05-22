@@ -21,7 +21,9 @@ namespace ThiefWorld
         public Levels Levels;
         Label label1 = new Label();
         private Level level;
-<<<<<<< HEAD
+
+        Button button4 = new Button();
+        Button button3 = new Button();
         private int Difficalty;
         private Character Player;
 
@@ -30,15 +32,8 @@ namespace ThiefWorld
             Difficalty = 1;
             Levels = levels;
             Player = player;
-=======
-        private int Difficalty = 1;
-        Button button4 = new Button();
-        Button button3 = new Button();
-        public Sublevel(int numberOfLevel, Levels levels)
-        { 
 
             this.Levels = levels;
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -68,6 +63,7 @@ namespace ThiefWorld
             buttonCentr1.Click += (sender, args) =>
             {
                 Difficalty = 1;
+                Clear();
             };
             var buttonCentr2 = new Button
             {
@@ -81,6 +77,7 @@ namespace ThiefWorld
             buttonCentr2.Click += (sender, args) =>
             {
                 Difficalty = 2;
+                Clear();
             };
             var buttonCentr3 = new Button
             {
@@ -94,7 +91,7 @@ namespace ThiefWorld
             buttonCentr3.Click += (sender, args) =>
             {
                 Difficalty = 3;
-            };
+                Clear();            };
             var labelCentr2 = new Label
             {
                 Location = new Point(1050, 750),
@@ -114,6 +111,7 @@ namespace ThiefWorld
             extraButtons.Add(buttonCentr3);
             extraLabels.Add(labelCentr);
             extraLabels.Add(labelCentr2);
+
             var button = new Button
             {
                 Location = new Point(40, 40),
@@ -159,16 +157,12 @@ namespace ThiefWorld
             var issue = level.Issue;
             button22.Click += (sender, args) =>
             {
+                
                 button3.Enabled = false;
                 button4.Enabled = false;
                 Clear();
                 GetEx(0,Difficalty - 1, true);
-<<<<<<< HEAD
-                //Player.AfterSublevel(676);
-                //Player.AfterSublevel(level.MathExamples.Score);
-=======
               
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
             button3 = new Button
@@ -386,12 +380,9 @@ namespace ThiefWorld
                     else
                         GetEx(i, difficalty, false);
                 }
-<<<<<<< HEAD
-=======
                 else
                     button3.Enabled = true;
 
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
             Controls.Add(box);
