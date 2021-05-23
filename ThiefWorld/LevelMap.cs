@@ -15,11 +15,8 @@ namespace ThiefWorld
     public partial class LevelMap : Form
     {
         public PictureBox Menu;
-        //private int NumberOfLevel;
         private Character Player;
-
         private Levels levels;
-
         public PictureBox level1Point;
         public PictureBox level2Point;
         public PictureBox level3Point;
@@ -27,7 +24,6 @@ namespace ThiefWorld
         public PictureBox level5Point;
         public PictureBox Money;
         private Label MoneyCount;
-
         public PictureBox picture1;
 
         public LevelMap(Levels levels, Character player)
@@ -39,9 +35,7 @@ namespace ThiefWorld
             this.levels = levels;
             Player = player;
             Load += LevelMap_Load;
-            
         }
-
 
         private void LevelMap_Load(object sender, EventArgs e)
         {

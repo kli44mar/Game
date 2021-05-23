@@ -21,7 +21,6 @@ namespace ThiefWorld
         public Levels Levels;
         Label label1 = new Label();
         private Level level;
-
         Button button4 = new Button();
         Button button3 = new Button();
         private int Difficalty;
@@ -308,12 +307,12 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-                    if (level.Sequences.CompareResult(example.Item1, answer))
+                    /*if (level.Sequences.CompareResult(example.Item1, answer))
                     {
                         box.Text = "Ответ: " + "правильно";
                     }
                     else
-                        box.Text = "Ответ: " + "неправильно";
+                        box.Text = "Ответ: " + "неправильно";*/
                     
                     if (i < level.Sequences.CountOfSequences)
                         GetIs(i);
@@ -322,13 +321,10 @@ namespace ThiefWorld
                 };
                 Controls.Add(button2);
                 Controls.Add(box);
-                
                 extraButtons.Add(button2);
                 extraBox.Add(box);
                 i++;
-                
-            };
-            
+            };      
             extraButtons.Add(button);
             extraLabels.Add(label);
             return i;
@@ -382,9 +378,7 @@ namespace ThiefWorld
                 }
                 else
                     button3.Enabled = true;
-
             };
-
             Controls.Add(box);
             Controls.Add(button2);
             Controls.Add(label);

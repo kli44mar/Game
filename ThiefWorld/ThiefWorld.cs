@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,7 @@ namespace ThiefWorld
         private readonly Button button;
         private readonly Button button2;
         private readonly Button button3;
+        private readonly Button button4;
         private readonly Label label;
         private readonly PictureBox pictureBox1;
         private readonly Character Player;
@@ -41,7 +43,6 @@ namespace ThiefWorld
                 BackColor = Color.FromArgb(255, 239, 172)
             };
 
-
             button = new Button
             {
                 Location = new Point(1641, 40),
@@ -65,9 +66,19 @@ namespace ThiefWorld
 
             button3 = new Button
             {
-                Location = new Point(930, 450),
-                Text = "Играть",
-                Font = new Font("Tahoma", 20, FontStyle.Bold),
+                Location = new Point(800, 450),
+                Text = "Продолжить игру",
+                Font = new Font("Tahoma", 16, FontStyle.Bold),
+                FlatStyle = FlatStyle.Flat,
+                Size = new Size(220, 150),
+                BackColor = Color.FromArgb(255, 239, 172)
+            };
+
+            button4 = new Button
+            {
+                Location = new Point(1040, 450),
+                Text = "Начать сначала",
+                Font = new Font("Tahoma", 16, FontStyle.Bold),
                 FlatStyle = FlatStyle.Flat,
                 Size = new Size(220, 150),
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -75,10 +86,19 @@ namespace ThiefWorld
 
             button2.Click += (sender, args) =>
             {
+                var str = JsonConvert.SerializeObject(player);
+                File.WriteAllText("./Game.json", str);
                 Close();
             };
 
             button3.Click += (sender, args) =>
+            {
+                var str = File.ReadAllText("./Game.json");
+                player = Character.Deserialize(str);
+                LevelMap newForm = new LevelMap(new Interface.Levels(), player);
+                newForm.Show();
+            };
+            button4.Click += (sender, args) =>
             {
                 LevelMap newForm = new LevelMap(new Interface.Levels(), player);
                 newForm.Show();
@@ -93,14 +113,14 @@ namespace ThiefWorld
                 SizeMode = PictureBoxSizeMode.Zoom
             };
             
-
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);
             Controls.Add(button2);
             Controls.Add(button3);
+            Controls.Add(button4);
             Controls.Add(label);
             Controls.Add(pictureBox1);
         }
 
-        }
+    }
 }
