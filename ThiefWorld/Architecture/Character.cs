@@ -38,7 +38,7 @@ namespace ThiefWorld
             this.Money -= price;
         }
 
-        public string Serialize()
+        public string SerializeGame()
         {
             return JsonConvert.SerializeObject(this);
         }

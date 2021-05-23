@@ -16,9 +16,7 @@ namespace ThiefWorld
     {
         public PictureBox Menu;
         private Character Player;
-
         private Levels levels;
-
         public PictureBox level1Point;
         public PictureBox level2Point;
         public PictureBox level3Point;
@@ -26,7 +24,6 @@ namespace ThiefWorld
         public PictureBox level5Point;
         public PictureBox Money;
         private Label MoneyCount;
-
         public PictureBox picture1;
 
         public LevelMap(Levels levels, Character player)
@@ -38,9 +35,7 @@ namespace ThiefWorld
             this.levels = levels;
             Player = player;
             Load += LevelMap_Load;
-            
         }
-
 
         private void LevelMap_Load(object sender, EventArgs e)
         {
@@ -117,7 +112,11 @@ namespace ThiefWorld
             };
             Menu.Click += (sender, args) =>
             {
+<<<<<<< HEAD
                 Close();
+=======
+                  Close();
+>>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
             };
             level1Point.Click += (sender, args)=>
             {

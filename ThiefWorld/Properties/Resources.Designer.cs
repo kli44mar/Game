@@ -63,9 +63,9 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _00 {
+        internal static System.Drawing.Bitmap _00_2 {
             get {
-                object obj = ResourceManager.GetObject("_00", resourceCulture);
+                object obj = ResourceManager.GetObject("_00_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _01 {
+        internal static System.Drawing.Bitmap _01_2 {
             get {
-                object obj = ResourceManager.GetObject("_01", resourceCulture);
+                object obj = ResourceManager.GetObject("_01_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _02 {
+        internal static System.Drawing.Bitmap _02_2 {
             get {
-                object obj = ResourceManager.GetObject("_02", resourceCulture);
+                object obj = ResourceManager.GetObject("_02_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace ThiefWorld.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _04 {
+        internal static System.Drawing.Bitmap _04_2 {
             get {
-                object obj = ResourceManager.GetObject("_04", resourceCulture);
+                object obj = ResourceManager.GetObject("_04_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
