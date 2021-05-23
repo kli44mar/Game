@@ -9,7 +9,7 @@ namespace ThiefWorld.Architecture
         AlreadyBought,
         AvailableForPurchase
     }
-    public class Shop
+    public class ShopOutfit
     {
         //public static IReadOnlyDictionary<string, string> OutfitAndNames
         //    = new Dictionary<string, string>()
@@ -19,12 +19,20 @@ namespace ThiefWorld.Architecture
         public IReadOnlyDictionary<string, int> PriceOfOutfit
             = new Dictionary<string, int>()
             {
-                [Outfit.Initial] = 0
+                [Outfit.Initial] = 0,
+                [Outfit.GrandSon] = 0,
+                [Outfit.Gentleman] = 550,
+                [Outfit.JustBatman] = 820,
+                [Outfit.FancyGuy] = 1075
             };
         public Dictionary<string, OutfitState> StateOfOutfits
             = new Dictionary<string, OutfitState>()
             {
-                [Outfit.Initial] = OutfitState.AlreadyBought
+                [Outfit.Initial] = OutfitState.AlreadyBought,
+                [Outfit.GrandSon] = OutfitState.AvailableForPurchase,
+                [Outfit.Gentleman] = OutfitState.AvailableForPurchase,
+                [Outfit.JustBatman] = OutfitState.AvailableForPurchase,
+                [Outfit.FancyGuy] = OutfitState.AvailableForPurchase
             };
 
         public void AfterPurchase (string outfitName)

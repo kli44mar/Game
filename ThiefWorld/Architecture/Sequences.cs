@@ -23,6 +23,12 @@ namespace ThiefWorld.Architecture
             this.UsedSequences = new List<string>();
         }
 
+        public void RestartSequences()
+        {
+            this.Score = 0;
+            this.UsedSequences = new List<string>();
+        }
+
         public (int, string) GetNextSequence()
         {
             var random = new Random();

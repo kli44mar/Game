@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThiefWorld.Architecture;
+using ThiefWorld.Interface;
 
 namespace ThiefWorld
 {
@@ -17,12 +19,15 @@ namespace ThiefWorld
         private readonly Button button2;
         private readonly Button button3;
         private readonly Label label;
-        private readonly PictureBox pictureBox1;
+        public readonly PictureBox pictureBox1;
         private readonly Character Player;
+        private readonly ShopOutfit ShopOutfit;
 
-        public ThiefWorld(Character player)
+        public ThiefWorld(Character player, ShopOutfit shop)
         {
+            Program.World = this;
             this.Player = player;
+            this.ShopOutfit = shop;
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
@@ -51,7 +56,22 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
-            
+
+            pictureBox1 = new PictureBox
+            {
+                BackColor = Color.Transparent,
+                Image = Helpers.OutfitToFileMap[Player.OutfitName],
+                Location = new Point(26, 279),
+                Size = new Size(400, 575),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+
+            button.Click += (sender, args) =>
+            {
+                Shop shop = new Shop(player, ShopOutfit, this.pictureBox1);
+                //shop.Owner = this;
+                shop.Show();
+            };
 
             button2 = new Button
             {
@@ -62,7 +82,6 @@ namespace ThiefWorld
                 Size = button.Size,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
-
             button3 = new Button
             {
                 Location = new Point(930, 450),
@@ -84,14 +103,7 @@ namespace ThiefWorld
                 newForm.Show();
             };
 
-            pictureBox1 = new PictureBox
-            {
-                BackColor = Color.Transparent,
-                Image = Properties.Resources.Initial,
-                Location = new Point(26, 279),
-                Size = new Size(400, 575),
-                SizeMode = PictureBoxSizeMode.Zoom
-            };
+            
             
 
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);

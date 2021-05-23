@@ -20,25 +20,17 @@ namespace ThiefWorld
         List<TextBox> extraBox = new List<TextBox>();
         public Levels Levels;
         Label label1 = new Label();
-        private Level level;
-<<<<<<< HEAD
+        private Level Level;
         private int Difficalty;
         private Character Player;
-
-        public Sublevel(int numberOfLevel, Levels levels, Character player)
-        {
-            Difficalty = 1;
-            Levels = levels;
-            Player = player;
-=======
-        private int Difficalty = 1;
         Button button4 = new Button();
         Button button3 = new Button();
-        public Sublevel(int numberOfLevel, Levels levels)
-        { 
 
-            this.Levels = levels;
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
+        public Sublevel(Level level, Levels levels, Character player)
+        {
+            Difficalty = 1;
+            Player = player;
+            Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -126,9 +118,9 @@ namespace ThiefWorld
             
             button.Click += (sender, args) =>
             {
-                level.ChangePoints();
-                Player.AfterSublevel(level.Points);
-                level.ChangeConditionOfLevel();
+                Level.ChangePoints();
+                Player.AfterSublevel(Level.Points);
+                Level.ChangeConditionOfLevel();
                 var newForm = new LevelMap(Levels, Player);
                 newForm.Show();
                 Close();
@@ -144,31 +136,16 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 192)
             };
-            if (numberOfLevel == 1)
-                level = Levels.Level1;
-            if (numberOfLevel == 2)
-                level = Levels.Level2;
-            if (numberOfLevel == 3)
-                level = Levels.Level3;
-            if (numberOfLevel == 4)
-                level = Levels.Level4;
-            if (numberOfLevel == 5)
-                level = Levels.Level5;
-            var mathExamples = level.MathExamples;
-            var sequences = level.Sequences;
-            var issue = level.Issue;
+            Level = level;
+            var mathExamples = Level.MathExamples;
+            var sequences = Level.Sequences;
+            var issue = Level.Issue;
             button22.Click += (sender, args) =>
             {
                 button3.Enabled = false;
                 button4.Enabled = false;
                 Clear();
                 GetEx(0,Difficalty - 1, true);
-<<<<<<< HEAD
-                //Player.AfterSublevel(676);
-                //Player.AfterSublevel(level.MathExamples.Score);
-=======
-              
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
             button3 = new Button
@@ -186,8 +163,6 @@ namespace ThiefWorld
                 button4.Enabled = false;
                 Clear();
                 GetIs(0);
-                //Console.WriteLine(level.Sequences.Score);
-                //Player.AfterSublevel(level.Sequences.Score);
             };
            
             button4 = new Button
@@ -235,7 +210,7 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-                    box.Text = "Ответ: " + level.Issue.CompareResult(needIssue.Item1, answer);
+                    box.Text = "Ответ: " + Level.Issue.CompareResult(needIssue.Item1, answer);
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
@@ -243,7 +218,6 @@ namespace ThiefWorld
                 extraButtons.Add(button2);
                 extraLabels.Add(label);
                 extraBox.Add(box);
-                //Player.AfterSublevel(level.Issue.Score);
             };
             label1 = new Label
             {
@@ -266,7 +240,7 @@ namespace ThiefWorld
         private int GetIs(int i)
         {
             Clear();
-            var example = level.Sequences.GetNextSequence();
+            var example = Level.Sequences.GetNextSequence();
             var label = new Label
             {
                 Location = new Point(ClientSize.Width / 2 - 100, 350),
@@ -314,14 +288,14 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-                    if (level.Sequences.CompareResult(example.Item1, answer))
+                    if (Level.Sequences.CompareResult(example.Item1, answer))
                     {
                         box.Text = "Ответ: " + "правильно";
                     }
                     else
                         box.Text = "Ответ: " + "неправильно";
                     
-                    if (i < level.Sequences.CountOfSequences)
+                    if (i < Level.Sequences.CountOfSequences)
                         GetIs(i);
                     else
                         button4.Enabled = true;
@@ -342,7 +316,7 @@ namespace ThiefWorld
 
         private int GetEx(int i, int difficalty, bool correctResult)
         {
-            var example = level.MathExamples.GetNextExample(difficalty, correctResult);
+            var example = Level.MathExamples.GetNextExample(difficalty, correctResult);
             difficalty = example.Item1.Item1;
             var label = new Label
             {
@@ -377,21 +351,18 @@ namespace ThiefWorld
                 var answer = box.Text;
                 box.Text = "Ответ: " + example.Item2;
                 i++;
-                if (i < level.MathExamples.CountOfExamples)
+                if (i < Level.MathExamples.CountOfExamples)
                 {
-                    if (level.MathExamples.CompareResult(example.Item1, answer))
+                    if (Level.MathExamples.CompareResult(example.Item1, answer))
                     { 
                         GetEx(i, difficalty, true);
                     }
                     else
                         GetEx(i, difficalty, false);
                 }
-<<<<<<< HEAD
-=======
                 else
                     button3.Enabled = true;
 
->>>>>>> 9db75ede630f684ea884c26164b9c3f093839ab8
             };
 
             Controls.Add(box);

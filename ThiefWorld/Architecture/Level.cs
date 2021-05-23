@@ -39,7 +39,10 @@ namespace ThiefWorld.Architecture
 
         public void Restart()
         {
-            this.Complete = false;
+            this.MathExamples.RestartMath();
+            this.Sequences.RestartSequences();
+            this.Issue.IssueRestart();
+            //this.Complete = false;
             this.Points = 0;
         }
 

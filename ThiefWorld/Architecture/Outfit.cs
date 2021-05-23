@@ -6,7 +6,11 @@ namespace ThiefWorld.Architecture
 {
     public static class Outfit
     {
-        public const string Initial = "Вор в законе";
+        public const string Initial = "Еще зеленый";
+        public const string GrandSon = "Бабушкин внучок";
+        public const string Gentleman = "Гавайский джентельмен";
+        public const string JustBatman = "Просто Бэтмен";
+        public const string FancyGuy = "Модный парниша";
 
     }
 }

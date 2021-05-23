@@ -40,6 +40,13 @@ namespace ThiefWorld.Architecture
             this.Difficalty = difficalty;
         }
 
+        public void RestartMath()
+        {
+            this.Score = 0;
+            this.UsedExamples = new List<(int, string)>();
+            this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int> { [DifficaltyOfExamples.Easy] = 0, [DifficaltyOfExamples.Hard] = 0, [DifficaltyOfExamples.Medium] = 0 };
+        }
+
         public ((int, string), string) GetNextExample(int difficalty, bool correctnessOfResult)
         {
             if (correctnessOfResult)

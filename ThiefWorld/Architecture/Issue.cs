@@ -16,6 +16,11 @@ namespace ThiefWorld.Architecture
             //this.Score = 0;
         }
 
+        public void IssueRestart()
+        {
+            this.Score = 0;
+        }
+
         public (string, string) GetIssue()
         {
             var random = new Random();
