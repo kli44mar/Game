@@ -11,16 +11,12 @@ namespace ThiefWorld
     public class Character
     {
         public string Name { get;  set; }
-        public string OutfitName { get; private set; }
-        public int Money { get; private set; }
-        public int Score { get; private set; }
+        public string OutfitName { get; set; }
+        public int Money { get; set; }
+        public int Score { get; set; }
         //имя
         //внешний вид
         //количество монет
-        public Character()
-        {
-
-        }
 
         public Character(string name)
         {
