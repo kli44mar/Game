@@ -69,7 +69,11 @@ namespace ThiefWorld
 
             button.Click += (sender, args) =>
             {
-                Shop shop = new Shop(player, ShopOutfit, this.pictureBox1);
+                string str = File.ReadAllText("./Game2.json");
+                ShopOutfit play = JsonConvert.DeserializeObject<ShopOutfit>(str);
+                if (play == null)
+                    play = ShopOutfit;
+                 Shop shop = new Shop(player, play, this.pictureBox1);
                 //shop.Owner = this;
                 shop.Show();
             };
@@ -120,6 +124,7 @@ namespace ThiefWorld
             };
             button4.Click += (sender, args) =>
             {
+                Program.World.Player = new Character("Leo");
                 LevelMap newForm = new LevelMap(new Interface.Levels(), Program.World.Player);
                 newForm.Show();
             };

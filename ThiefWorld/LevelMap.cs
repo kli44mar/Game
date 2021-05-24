@@ -33,7 +33,7 @@ namespace ThiefWorld
             FormBorderStyle = FormBorderStyle.FixedDialog;
             BackgroundImage = LevelsImages.LevelMapBackground;
             this.levels = levels;
-            //Program.World.Player = player;
+            Player = player;
             Load += LevelMap_Load;
         }
 
