@@ -12,11 +12,11 @@ namespace ThiefWorld.Interface
         public static readonly IReadOnlyDictionary<string, Bitmap> OutfitToFileMap
             = new Dictionary<string, Bitmap>()
             {
-                [Outfit.Initial] = Properties.Resources._02,
+                [Outfit.Initial] = Properties.Resources._02_2,
                 [Outfit.GrandSon] = Properties.Resources.Initial,
-                [Outfit.Gentleman] = Properties.Resources._00,
-                [Outfit.JustBatman] = Properties.Resources._01,
-                [Outfit.FancyGuy] = Properties.Resources._04
+                [Outfit.Gentleman] = Properties.Resources._00_2,
+                [Outfit.JustBatman] = Properties.Resources._01_2,
+                [Outfit.FancyGuy] = Properties.Resources._04_2
             };
     }
 }

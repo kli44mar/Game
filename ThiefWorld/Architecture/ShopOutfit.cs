@@ -20,7 +20,7 @@ namespace ThiefWorld.Architecture
             = new Dictionary<string, int>()
             {
                 [Outfit.Initial] = 0,
-                [Outfit.GrandSon] = 0,
+                [Outfit.GrandSon] = 300,
                 [Outfit.Gentleman] = 550,
                 [Outfit.JustBatman] = 820,
                 [Outfit.FancyGuy] = 1075
