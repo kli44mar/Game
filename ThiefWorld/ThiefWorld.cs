@@ -87,7 +87,7 @@ namespace ThiefWorld
             {
                 Location = new Point(800, 450),
                 Text = "Продолжить игру",
-                Font = new Font("Tahoma", 16, FontStyle.Bold),
+                Font = new Font("Tahoma", 14, FontStyle.Bold),
                 FlatStyle = FlatStyle.Flat,
                 Size = new Size(220, 150),
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -96,8 +96,8 @@ namespace ThiefWorld
             button4 = new Button
             {
                 Location = new Point(1040, 450),
-                Text = "Начать сначала",
-                Font = new Font("Tahoma", 16, FontStyle.Bold),
+                Text = "Начать заново",
+                Font = new Font("Tahoma", 14, FontStyle.Bold),
                 FlatStyle = FlatStyle.Flat,
                 Size = new Size(220, 150),
                 BackColor = Color.FromArgb(255, 239, 172)
