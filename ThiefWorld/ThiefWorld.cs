@@ -105,7 +105,7 @@ namespace ThiefWorld
 
             button2.Click += (sender, args) =>
             {
-                string str = JsonConvert.SerializeObject(Player);
+                string str = JsonConvert.SerializeObject(Program.World.Player);
                 File.WriteAllText("./Game.json", str);
                 Close();
             };
@@ -114,12 +114,14 @@ namespace ThiefWorld
             {
                 string str = File.ReadAllText("./Game.json");
                 Character play = JsonConvert.DeserializeObject<Character>(str);
+                Program.World.Player = play;
                 LevelMap newForm = new LevelMap(new Interface.Levels(), play);
                 newForm.Show();
             };
             button4.Click += (sender, args) =>
             {
-                LevelMap newForm = new LevelMap(new Interface.Levels(), Player);
+                Program.World.Player = new Character("Leo");
+                LevelMap newForm = new LevelMap(new Interface.Levels(), Program.World.Player);
                 newForm.Show();
             };
 

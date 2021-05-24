@@ -105,7 +105,7 @@ namespace ThiefWorld
                 BackColor = Color.Transparent,
                 Location = new Point(1810, 902),
                 Size = new Size(200, 200),
-                Text = Player.Money.ToString(),
+                Text = Program.World.Player.Money.ToString(),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Arial", 18, FontStyle.Bold),
@@ -118,35 +118,35 @@ namespace ThiefWorld
             level1Point.Click += (sender, args)=>
             {
                 levels.Level1.Restart();
-                Sublevel newForm = new Sublevel(levels.Level1, levels, Player);
+                Sublevel newForm = new Sublevel(levels.Level1, levels, Program.World.Player);
                 newForm.Show();
                 Close();
             };
             level2Point.Click += (sender, args) =>
             {
                 levels.Level2.Restart();
-                Sublevel newForm = new Sublevel(levels.Level2, levels, Player);
+                Sublevel newForm = new Sublevel(levels.Level2, levels, Program.World.Player);
                 newForm.Show();
                 Close();
             };
             level3Point.Click += (sender, args) =>
             {
                 levels.Level3.Restart();
-                Sublevel newForm = new Sublevel(levels.Level3, levels, Player);
+                Sublevel newForm = new Sublevel(levels.Level3, levels, Program.World.Player);
                 newForm.Show();
                 Close();
             };
             level4Point.Click += (sender, args) =>
             {
                 levels.Level4.Restart();
-                Sublevel newForm = new Sublevel(levels.Level4, levels, Player);
+                Sublevel newForm = new Sublevel(levels.Level4, levels, Program.World.Player);
                 newForm.Show();
                 Close();
             };
             level5Point.Click += (sender, args) =>
             {
                 levels.Level5.Restart();
-                Sublevel newForm = new Sublevel(levels.Level5, levels, Player);
+                Sublevel newForm = new Sublevel(levels.Level5, levels, Program.World.Player);
                 newForm.Show();
                 Close();
             };

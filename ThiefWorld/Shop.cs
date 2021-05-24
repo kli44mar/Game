@@ -98,7 +98,7 @@ namespace ThiefWorld
             {
                 Name = Player.OutfitName,
                 BackColor = Color.Transparent,
-                Image = Helpers.OutfitToFileMap[Player.OutfitName],
+                Image = Helpers.OutfitToFileMap[Program.World.Player.OutfitName],
                 Location = new Point(1100, 120),
                 Size = new Size(750, 750),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -126,7 +126,7 @@ namespace ThiefWorld
                 BackColor = Color.Transparent,
                 Location = new Point(1780, 37),
                 Size = new Size(150, 150),
-                Text = Player.Money.ToString(),
+                Text = Program.World.Player.Money.ToString(),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Arial", 20, FontStyle.Bold)
@@ -175,7 +175,7 @@ namespace ThiefWorld
             Condition.Click += (sender, args) => 
             {
                 if (Condition.Text == "Купить")
-                    if (Player.Money >= BigShop.PriceOfOutfit[MainCharacter.Name])
+                    if (Program.World.Player.Money >= BigShop.PriceOfOutfit[MainCharacter.Name])
                     {
                         /*var form = new Form();
                         form.Size = new Size(300, 300);
@@ -184,15 +184,16 @@ namespace ThiefWorld
                         if (result == DialogResult.Yes)
                         {
                             BigShop.AfterPurchase(MainCharacter.Name);
-                            Player.AfterPurchase(MainCharacter.Name, BigShop.PriceOfOutfit[MainCharacter.Name]);
+                            Program.World.Player.AfterPurchase(MainCharacter.Name, BigShop.PriceOfOutfit[MainCharacter.Name]);
                             Condition.Text = "Выбрать";
-                            MoneyCount.Text = Player.Money.ToString();
+                            MoneyCount.Text = Program.World.Player.Money.ToString();
                             Program.World.pictureBox1.Image = Helpers.OutfitToFileMap[MainCharacter.Name];
                         }
                     }
                     else MessageBox.Show("Недостаточно монет для покупки", "Мало денег", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
+                    Program.World.Player.OutfitName = MainCharacter.Name;
                     Program.World.pictureBox1.Image = Helpers.OutfitToFileMap[MainCharacter.Name];
                 }
 

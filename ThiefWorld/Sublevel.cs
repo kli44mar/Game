@@ -122,9 +122,9 @@ namespace ThiefWorld
             button.Click += (sender, args) =>
             {
                 Level.ChangePoints();
-                Player.AfterSublevel(Level.Points);
+                Program.World.Player.AfterSublevel(Level.Points);
                 Level.ChangeConditionOfLevel();
-                var newForm = new LevelMap(Levels, Player);
+                var newForm = new LevelMap(Levels, Program.World.Player);
                 newForm.Show();
                 Close();
 
