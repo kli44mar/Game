@@ -293,12 +293,7 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-                    /*if (level.Sequences.CompareResult(example.Item1, answer))
-                    {
-                        box.Text = "Ответ: " + "правильно";
-                    }
-                    else
-                        box.Text = "Ответ: " + "неправильно";*/
+
                     
                     if (i < Level.Sequences.CountOfSequences)
                         GetIs(i);
@@ -364,6 +359,7 @@ namespace ThiefWorld
                 }
                 else
                     button3.Enabled = true;
+
             };
             Controls.Add(box);
             Controls.Add(button2);
