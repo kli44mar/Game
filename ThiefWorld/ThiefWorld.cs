@@ -69,7 +69,14 @@ namespace ThiefWorld
 
             button.Click += (sender, args) =>
             {
-                string str = File.ReadAllText("./Game2.json");
+                string str;
+                if (!File.Exists("Game2.json"))
+                {
+                    File.Create("./ Game2.json");
+                    str = "";
+                }
+                else
+                    str = File.ReadAllText("./Game2.json");
                 ShopOutfit play = JsonConvert.DeserializeObject<ShopOutfit>(str);
                 if (play == null)
                     play = ShopOutfit;
@@ -116,6 +123,8 @@ namespace ThiefWorld
 
             button3.Click += (sender, args) =>
             {
+                if (!File.Exists("Game.json"))
+                    File.Create("./ Game.json");
                 string str = File.ReadAllText("./Game.json");
                 Character play = JsonConvert.DeserializeObject<Character>(str);
                 Program.World.Player = play;
