@@ -112,6 +112,7 @@ namespace ThiefWorld
             };
             Menu.Click += (sender, args) =>
             {
+                Program.World.Player = Player;
                 Close();
             };
             level1Point.Click += (sender, args)=>

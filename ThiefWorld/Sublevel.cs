@@ -30,10 +30,7 @@ namespace ThiefWorld
         {
             Difficalty = 1;
             Player = player;
-
-           // Levels = levels;
-
-            this.Levels = levels;
+            Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -153,7 +150,7 @@ namespace ThiefWorld
                 button4.Enabled = false;
                 Clear();
                 GetEx(0,Difficalty - 1, true);
-
+              
             };
 
             button3 = new Button
@@ -194,7 +191,7 @@ namespace ThiefWorld
                     Size = new Size(800, 100),
                     Text = "Отгадайте загадку: " + needIssue.Item1,
                     FlatStyle = FlatStyle.Flat,
-                    Font = new Font("Tahoma", 12, FontStyle.Bold),
+                    Font = new Font("Tahoma", 10, FontStyle.Bold),
                     BackColor = Color.Transparent
                 };
                 var box = new TextBox
@@ -202,7 +199,7 @@ namespace ThiefWorld
                     Location = new Point(ClientSize.Width / 2 + 340, 600),
                     Size = new Size(180, 300),
                     BackColor = Color.White,
-                    Font = new Font("Tahoma", 14, FontStyle.Bold)
+                    Font = new Font("Tahoma", 12, FontStyle.Bold)
 
                 };
                 var button2 = new Button
@@ -297,15 +294,6 @@ namespace ThiefWorld
                     var answer = box.Text;
                     box.Enabled = false;
 
-                    //if (Level.Sequences.CompareResult(example.Item1, answer))
-
-                    /*if (level.Sequences.CompareResult(example.Item1, answer))
-
-                    {
-                        box.Text = "Ответ: " + "правильно";
-                    }
-                    else
-                        box.Text = "Ответ: " + "неправильно";*/
                     
                     if (i < Level.Sequences.CountOfSequences)
                         GetIs(i);

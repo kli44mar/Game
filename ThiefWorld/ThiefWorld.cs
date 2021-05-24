@@ -22,7 +22,7 @@ namespace ThiefWorld
         private readonly Button button4;
         private readonly Label label;
         public readonly PictureBox pictureBox1;
-        private readonly Character Player;
+        public Character Player;
         private readonly ShopOutfit ShopOutfit;
 
         public ThiefWorld(Character player, ShopOutfit shop)
@@ -105,33 +105,25 @@ namespace ThiefWorld
 
             button2.Click += (sender, args) =>
             {
-                var str = JsonConvert.SerializeObject(player);
+                string str = JsonConvert.SerializeObject(Player);
                 File.WriteAllText("./Game.json", str);
                 Close();
             };
 
             button3.Click += (sender, args) =>
             {
-                var str = File.ReadAllText("./Game.json");
-                player = Character.Deserialize(str);
-                LevelMap newForm = new LevelMap(new Interface.Levels(), player);
+                string str = File.ReadAllText("./Game.json");
+                Character play = JsonConvert.DeserializeObject<Character>(str);
+                LevelMap newForm = new LevelMap(new Interface.Levels(), play);
                 newForm.Show();
             };
             button4.Click += (sender, args) =>
             {
-                LevelMap newForm = new LevelMap(new Interface.Levels(), player);
+                LevelMap newForm = new LevelMap(new Interface.Levels(), Player);
                 newForm.Show();
             };
 
-
-            pictureBox1 = new PictureBox
-            {
-                BackColor = Color.Transparent,
-                Image = Properties.Resources._02_2,
-                Location = new Point(26, 279),
-                Size = new Size(400, 575),
-                SizeMode = PictureBoxSizeMode.Zoom
-            };
+            
             
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);
