@@ -195,7 +195,7 @@ namespace ThiefWorld
                             Program.World.Player.AfterPurchase(MainCharacter.Name, BigShop.PriceOfOutfit[MainCharacter.Name]);
                             Condition.Text = "Выбрать";
                             MoneyCount.Text = Program.World.Player.Money.ToString();
-                            Program.World.pictureBox1.Image = Helpers.OutfitToFileMap[MainCharacter.Name];
+                            //Program.World.pictureBox1.Image = Helpers.OutfitToFileMap[MainCharacter.Name];
                         }
                     }
                     else MessageBox.Show("Недостаточно монет для покупки", "Мало денег", MessageBoxButtons.OK, MessageBoxIcon.Error);

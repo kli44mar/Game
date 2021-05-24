@@ -293,10 +293,13 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-
                     
+                    Level.Sequences.CompareResult(example.Item1, answer);
+
                     if (i < Level.Sequences.CountOfSequences)
+                    {
                         GetIs(i);
+                    }
                     else
                         button4.Enabled = true;
                 };
