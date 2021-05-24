@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using ThiefWorld.Architecture;
@@ -96,7 +98,7 @@ namespace ThiefWorld
             };
             MainCharacter = new PictureBox
             {
-                Name = Player.OutfitName,
+                Name = Program.World.Player.OutfitName,
                 BackColor = Color.Transparent,
                 Image = Helpers.OutfitToFileMap[Program.World.Player.OutfitName],
                 Location = new Point(1100, 120),
@@ -141,7 +143,13 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Arial", 18, FontStyle.Bold)
             };
-            Menu.Click += (sender, args) => { Close(); };
+            Menu.Click += (sender, args) => {
+                string str = JsonConvert.SerializeObject(Program.World.Player);
+                File.WriteAllText("./Game.json", str);
+                string str2 = JsonConvert.SerializeObject(BigShop);
+                File.WriteAllText("./Game2.json", str2);
+                Close(); 
+            };
             InitialCostum.Click += (sender, args) => 
             {
                 MainCharacter.Name = Outfit.Initial;

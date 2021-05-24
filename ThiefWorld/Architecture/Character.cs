@@ -17,10 +17,6 @@ namespace ThiefWorld
         //имя
         //внешний вид
         //количество монет
-        public Character()
-        {
-
-        }
 
         public Character(string name)
         {

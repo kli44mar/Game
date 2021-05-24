@@ -61,7 +61,7 @@ namespace ThiefWorld
             pictureBox1 = new PictureBox
             {
                 BackColor = Color.Transparent,
-                Image = Helpers.OutfitToFileMap[Player.OutfitName],
+                Image = Helpers.OutfitToFileMap[Program.World.Player.OutfitName],
                 Location = new Point(26, 279),
                 Size = new Size(400, 575),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -69,7 +69,11 @@ namespace ThiefWorld
 
             button.Click += (sender, args) =>
             {
-                Shop shop = new Shop(player, ShopOutfit, this.pictureBox1);
+                string str = File.ReadAllText("./Game2.json");
+                ShopOutfit play = JsonConvert.DeserializeObject<ShopOutfit>(str);
+                if (play == null)
+                    play = ShopOutfit;
+                 Shop shop = new Shop(player, play, this.pictureBox1);
                 //shop.Owner = this;
                 shop.Show();
             };
