@@ -20,13 +20,7 @@ namespace ThiefWorld
         List<TextBox> extraBox = new List<TextBox>();
         public Levels Levels;
         Label label1 = new Label();
-<<<<<<< HEAD
         private Level Level;
-=======
-        private Level level;
-        Button button4 = new Button();
-        Button button3 = new Button();
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
         private int Difficalty;
         private Character Player;
         Button button4 = new Button();
@@ -36,12 +30,10 @@ namespace ThiefWorld
         {
             Difficalty = 1;
             Player = player;
-<<<<<<< HEAD
-            Levels = levels;
-=======
+
+           // Levels = levels;
 
             this.Levels = levels;
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -161,10 +153,7 @@ namespace ThiefWorld
                 button4.Enabled = false;
                 Clear();
                 GetEx(0,Difficalty - 1, true);
-<<<<<<< HEAD
-=======
-              
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
+
             };
 
             button3 = new Button
@@ -307,11 +296,11 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-<<<<<<< HEAD
-                    if (Level.Sequences.CompareResult(example.Item1, answer))
-=======
+
+                    //if (Level.Sequences.CompareResult(example.Item1, answer))
+
                     /*if (level.Sequences.CompareResult(example.Item1, answer))
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
+
                     {
                         box.Text = "Ответ: " + "правильно";
                     }
@@ -382,10 +371,7 @@ namespace ThiefWorld
                 }
                 else
                     button3.Enabled = true;
-<<<<<<< HEAD
 
-=======
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
             };
             Controls.Add(box);
             Controls.Add(button2);

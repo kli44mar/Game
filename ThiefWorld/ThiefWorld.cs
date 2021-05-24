@@ -123,9 +123,7 @@ namespace ThiefWorld
                 newForm.Show();
             };
 
-<<<<<<< HEAD
-            
-=======
+
             pictureBox1 = new PictureBox
             {
                 BackColor = Color.Transparent,
@@ -134,7 +132,6 @@ namespace ThiefWorld
                 Size = new Size(400, 575),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
             
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);

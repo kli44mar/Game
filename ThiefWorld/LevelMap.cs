@@ -112,11 +112,7 @@ namespace ThiefWorld
             };
             Menu.Click += (sender, args) =>
             {
-<<<<<<< HEAD
                 Close();
-=======
-                  Close();
->>>>>>> e7e3edc62258205143ca9fc23259d3898df5a9b8
             };
             level1Point.Click += (sender, args)=>
             {
