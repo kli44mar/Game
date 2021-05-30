@@ -221,10 +221,11 @@ namespace ThiefWorld
                 var needIssue = issue.GetIssue();
                 var label = new Label
                 {
-                    Location = new Point(ClientSize.Width / 2 - 100, 400),
-                    Size = new Size(800, 100),
+                    Location = new Point(ClientSize.Width / 2 - 155, 300),
+                    Size = new Size(900, 200),
                     Text = "Отгадайте загадку: " + needIssue.Item1,
                     FlatStyle = FlatStyle.Flat,
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Font = new Font("Tahoma", 10, FontStyle.Bold),
                     BackColor = Color.Transparent
                 };
