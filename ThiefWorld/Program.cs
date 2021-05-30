@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThiefWorld.Interface;
 
 namespace ThiefWorld
 {
@@ -13,15 +14,18 @@ namespace ThiefWorld
         /// </summary>
         /// 
         public static ThiefWorld World;
+        public static Levels LevelsGet = new Levels();
 
         [STAThread]
         static void Main()
         {
             var player = new Character("Leo");
+            //LevelsGet = new Levels
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ThiefWorld(player, new Architecture.ShopOutfit()));
+
+            Application.Run(new ThiefWorld(player));
             //Application.Run(new LevelMap(new Interface.Levels(), player));
         }
 

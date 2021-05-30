@@ -25,12 +25,17 @@ namespace ThiefWorld
         private Character Player;
         Button button4 = new Button();
         Button button3 = new Button();
+        private IReadOnlyDictionary<bool, string> ToRussian = new Dictionary<bool, string>()
+        {
+            [true] = "Верно",
+            [false] = "Неверно"
+        };
 
-        public Sublevel(Level level, Levels levels, Character player)
+        public Sublevel(Level level, ShopOutfit shop)
         {
             Difficalty = 1;
-            Player = player;
-            Levels = levels;
+            //Player = player;
+            //Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -122,9 +127,28 @@ namespace ThiefWorld
             button.Click += (sender, args) =>
             {
                 Level.ChangePoints();
+                Program.World.Player.ChangePointsAndCompleteLevel(Level.LevelNumber, Level.Points);
                 Program.World.Player.AfterSublevel(Level.Points);
                 Level.ChangeConditionOfLevel();
-                var newForm = new LevelMap(Levels, Program.World.Player);
+                switch (Level.LevelNumber)
+                {
+                    case 1:
+                        Program.LevelsGet.Level1.ChangeConditionAndPointsOfLevel(Level.Points);
+                        break;
+                    case 2:
+                        Program.LevelsGet.Level2.ChangeConditionAndPointsOfLevel(Level.Points);
+                        break;
+                    case 3:
+                        Program.LevelsGet.Level3.ChangeConditionAndPointsOfLevel(Level.Points);
+                        break;
+                    case 4:
+                        Program.LevelsGet.Level4.ChangeConditionAndPointsOfLevel(Level.Points);
+                        break;
+                    case 5:
+                        Program.LevelsGet.Level5.ChangeConditionAndPointsOfLevel(Level.Points);
+                        break;
+                }
+                var newForm = new LevelMap(Program.LevelsGet, shop);
                 newForm.Show();
                 Close();
 
@@ -145,7 +169,7 @@ namespace ThiefWorld
             var issue = Level.Issue;
             button22.Click += (sender, args) =>
             {
-                
+                button22.Enabled = false;
                 button3.Enabled = false;
                 button4.Enabled = false;
                 Clear();
@@ -164,6 +188,7 @@ namespace ThiefWorld
             };
             button3.Click += (sender, args) =>
             {
+                button3.Enabled = false;
                 button22.Enabled = false;
                 button4.Enabled = false;
                 Clear();
@@ -181,6 +206,7 @@ namespace ThiefWorld
             };
             button4.Click += (sender, args) =>
             {
+                button4.Enabled = false;
                 button22.Enabled = false;
                 button3.Enabled = false;
                 Clear();
@@ -215,7 +241,7 @@ namespace ThiefWorld
                 {
                     var answer = box.Text;
                     box.Enabled = false;
-                    box.Text = "Ответ: " + Level.Issue.CompareResult(needIssue.Item1, answer);
+                    box.Text = ToRussian[Level.Issue.CompareResult(needIssue.Item1, answer)];
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
@@ -270,8 +296,7 @@ namespace ThiefWorld
             extraButtons.Add(button);
             
             button.Click += (sender, args) =>
-            {
-                
+            {                
                 Clear();
                 var box = new TextBox
                 {
@@ -294,20 +319,23 @@ namespace ThiefWorld
                     var answer = box.Text;
                     box.Enabled = false;
                     
-                    Level.Sequences.CompareResult(example.Item1, answer);
-
+                    MessageBox.Show(ToRussian[Level.Sequences.CompareResult(example.Item1, answer)], "Answer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    i++;
                     if (i < Level.Sequences.CountOfSequences)
                     {
                         GetIs(i);
                     }
                     else
+                    {
+                        button2.Enabled = false;
                         button4.Enabled = true;
+                    }
                 };
                 Controls.Add(button2);
                 Controls.Add(box);
                 extraButtons.Add(button2);
                 extraBox.Add(box);
-                i++;
+                
             };      
             extraButtons.Add(button);
             extraLabels.Add(label);
@@ -351,6 +379,7 @@ namespace ThiefWorld
                 var answer = box.Text;
                 box.Text = "Ответ: " + example.Item2;
                 i++;
+                button2.Enabled = false;
                 if (i < Level.MathExamples.CountOfExamples)
                 {
                     if (Level.MathExamples.CompareResult(example.Item1, answer))

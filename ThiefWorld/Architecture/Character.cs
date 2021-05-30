@@ -14,9 +14,7 @@ namespace ThiefWorld
         public string OutfitName { get;  set; }
         public int Money { get;  set; }
         public int Score { get;  set; }
-        //имя
-        //внешний вид
-        //количество монет
+        public Dictionary<int, (bool, int)> LevelPointsAndComplete { get; set; }
 
         public Character(string name)
         {
@@ -24,6 +22,15 @@ namespace ThiefWorld
             this.OutfitName = Outfit.Initial;
             this.Money = 0;
             this.Score = 0;
+            this.LevelPointsAndComplete = 
+                new Dictionary<int, (bool, int)>() 
+                { 
+                    [1] = (false, 0),
+                    [2] = (false, 0),
+                    [3] = (false, 0),
+                    [4] = (false, 0),
+                    [5] = (false, 0)
+            };
         }
 
         public void AfterSublevel(int income)
@@ -36,6 +43,22 @@ namespace ThiefWorld
         {
             this.OutfitName = outfit;
             this.Money -= price;
+        }
+
+        public void AfterLevelRestart(int points, int level)
+        {
+            if (this.Money >= points)
+                this.Money -= points;
+            else this.Money = 0;
+            this.Score -= points;
+            this.LevelPointsAndComplete[level] = (false, 0);
+        }
+
+        public void ChangePointsAndCompleteLevel(int level, int points)
+        {
+            if (points > 150)
+                this.LevelPointsAndComplete[level] = (true, points);
+            else this.LevelPointsAndComplete[level] = (false, points);
         }
 
         public string SerializeGame()

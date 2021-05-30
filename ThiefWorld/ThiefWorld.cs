@@ -24,12 +24,13 @@ namespace ThiefWorld
         public readonly PictureBox pictureBox1;
         public Character Player;
         private readonly ShopOutfit ShopOutfit;
+        private Levels GetLevels;
 
-        public ThiefWorld(Character player, ShopOutfit shop)
+        public ThiefWorld(Character player)
         {
             Program.World = this;
             this.Player = player;
-            this.ShopOutfit = shop;
+            //this.ShopOutfit = shop;
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
@@ -39,10 +40,11 @@ namespace ThiefWorld
             label = new Label()
             {
                 Location = new Point(40, 40),
-                Text = "Дорогой вор, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
+                Text = "Дорогой друг, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
-                " Единственный способ зароботать деньги -  проходить уровни.",
-                Size = new Size(700, 200),
+                " Единственный способ заработать деньги и выбраться из другого мира - это прохождение уровней. Успехов!",
+                Size = new Size(700, (int)Font.Size*24),
+                ForeColor = Color.Black,
                 Font = new Font("Tahoma", 12),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -51,7 +53,7 @@ namespace ThiefWorld
             button = new Button
             {
                 Location = new Point(1641, 40),
-                Text = "Магазин",
+                Text = "Помощь",
                 Font = new Font("Tahoma", 16),
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
@@ -69,20 +71,8 @@ namespace ThiefWorld
 
             button.Click += (sender, args) =>
             {
-                string str;
-                if (!File.Exists("Game2.json"))
-                {
-                    File.Create("./ Game2.json");
-                    str = "";
-                }
-                else
-                    str = File.ReadAllText("./Game2.json");
-                ShopOutfit play = JsonConvert.DeserializeObject<ShopOutfit>(str);
-                if (play == null)
-                    play = ShopOutfit;
-                 Shop shop = new Shop(player, play, this.pictureBox1);
-                //shop.Owner = this;
-                shop.Show();
+                var information = new Information();
+                information.Show();
             };
 
             button2 = new Button
@@ -117,6 +107,7 @@ namespace ThiefWorld
             button2.Click += (sender, args) =>
             {
                 string str = JsonConvert.SerializeObject(Program.World.Player);
+                //throw new ArgumentException();
                 File.WriteAllText("./Game.json", str);
                 Close();
             };
@@ -127,14 +118,43 @@ namespace ThiefWorld
                     File.Create("./ Game.json");
                 string str = File.ReadAllText("./Game.json");
                 Character play = JsonConvert.DeserializeObject<Character>(str);
+                if (play == null)
+                    play = new Character("Leo");
                 Program.World.Player = play;
-                LevelMap newForm = new LevelMap(new Interface.Levels(), play);
+                //var levels = new Levels();
+                Program.LevelsGet.Level1.Complete = Program.World.Player.LevelPointsAndComplete[1].Item1;
+                Program.LevelsGet.Level2.Complete = Program.World.Player.LevelPointsAndComplete[2].Item1;
+                Program.LevelsGet.Level3.Complete = Program.World.Player.LevelPointsAndComplete[3].Item1;
+                Program.LevelsGet.Level4.Complete = Program.World.Player.LevelPointsAndComplete[4].Item1;
+                Program.LevelsGet.Level5.Complete = Program.World.Player.LevelPointsAndComplete[5].Item1;
+                Program.LevelsGet.Level1.ChangePointsAfterDeserealize(Program.World.Player.LevelPointsAndComplete[1].Item2);
+                Program.LevelsGet.Level2.ChangePointsAfterDeserealize(Program.World.Player.LevelPointsAndComplete[2].Item2);
+                Program.LevelsGet.Level3.ChangePointsAfterDeserealize(Program.World.Player.LevelPointsAndComplete[3].Item2);
+                Program.LevelsGet.Level4.ChangePointsAfterDeserealize(Program.World.Player.LevelPointsAndComplete[4].Item2);
+                Program.LevelsGet.Level5.ChangePointsAfterDeserealize(Program.World.Player.LevelPointsAndComplete[5].Item2);
+                string str1;
+                if (!File.Exists("Game2.json"))
+                {
+                    File.Create("./ Game2.json");
+                    str1 = "";
+                }
+                else
+                    str1 = File.ReadAllText("./Game2.json");
+                ShopOutfit play1 = JsonConvert.DeserializeObject<ShopOutfit>(str1);
+                if (play1 == null)
+                    play1 = new ShopOutfit();
+               // Shop shop = new Shop(player, play1, this.pictureBox1, Program.LevelsGet);
+                //shop.Owner = this;
+                //shop.Show();
+                LevelMap newForm = new LevelMap(Program.LevelsGet, play1);
                 newForm.Show();
             };
             button4.Click += (sender, args) =>
             {
+                File.WriteAllText("./Game.json", "null");
+                File.WriteAllText("./Game2.json", "null");
                 Program.World.Player = new Character("Leo");
-                LevelMap newForm = new LevelMap(new Interface.Levels(), Program.World.Player);
+                LevelMap newForm = new LevelMap(Program.LevelsGet, new ShopOutfit());
                 newForm.Show();
             };
 

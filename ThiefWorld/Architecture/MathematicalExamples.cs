@@ -23,12 +23,12 @@ namespace ThiefWorld.Architecture
             Hard = 3
         }
 
-        public MathematicalExamples(IReadOnlyDictionary<(int, string), string> examples, int countOfExamples)
+        public MathematicalExamples(IReadOnlyDictionary<(int, string), string> examples, int countOfExamples, int number)
         {
             this.MathExamples = examples;
-            this.PointsForEasyExample = 10;
-            this.PointsForMediumExample = 20;
-            this.PointsForHardExample = 30;
+            this.PointsForEasyExample = 10 * number;
+            this.PointsForMediumExample = 20 * number;
+            this.PointsForHardExample = 30 * number;
             this.Difficalty = DifficaltyOfExamples.Easy;
             this.CountOfUsedExamples = new Dictionary<DifficaltyOfExamples, int> { [DifficaltyOfExamples.Easy] = 0, [DifficaltyOfExamples.Hard] = 0, [DifficaltyOfExamples.Medium] = 0 };
             this.UsedExamples = new List<(int, string)>();

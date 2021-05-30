@@ -11,11 +11,6 @@ namespace ThiefWorld.Architecture
     }
     public class ShopOutfit
     {
-        //public static IReadOnlyDictionary<string, string> OutfitAndNames
-        //    = new Dictionary<string, string>()
-        //    {
-        //        [Outfit.Initial] = "Вор в законе"
-        //    };
         public IReadOnlyDictionary<string, int> PriceOfOutfit
             = new Dictionary<string, int>()
             {

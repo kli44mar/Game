@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,25 +16,24 @@ namespace ThiefWorld
     public partial class LevelMap : Form
     {
         public PictureBox Menu;
-        private Character Player;
-        private Levels levels;
         public PictureBox level1Point;
         public PictureBox level2Point;
         public PictureBox level3Point;
         public PictureBox level4Point;
         public PictureBox level5Point;
+        public PictureBox Shop;
         public PictureBox Money;
         private Label MoneyCount;
         public PictureBox picture1;
+        public ShopOutfit YourShop;
 
-        public LevelMap(Levels levels, Character player)
+        public LevelMap(Levels levels, ShopOutfit shop)
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             BackgroundImage = LevelsImages.LevelMapBackground;
-            this.levels = levels;
-            Player = player;
+            YourShop = shop;
             Load += LevelMap_Load;
         }
 
@@ -96,84 +96,139 @@ namespace ThiefWorld
             {
                 BackColor = Color.Transparent,
                 Image = LevelsImages.money,
-                Location = new Point(1660, 850),
+                Location = new Point(1660, 830),
                 Size = new Size(150, 150),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
             MoneyCount = new Label
             {
                 BackColor = Color.Transparent,
-                Location = new Point(1810, 902),
+                Location = new Point(1810, 892),
                 Size = new Size(200, 200),
                 Text = Program.World.Player.Money.ToString(),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Arial", 18, FontStyle.Bold),
             };
+            Shop = new PictureBox
+            {
+                BackColor = Color.Transparent,
+                Image = LevelsImages.shop,
+                Location = new Point(880, 800),
+                Size = new Size(200, 200),
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
             Menu.Click += (sender, args) =>
             {
-                Program.World.Player = Player;
+                Close();
+            };
+            Shop.Click += (sender, args) =>
+            {
+                var shop = new Shop(YourShop);
+                shop.Show();
                 Close();
             };
             level1Point.Click += (sender, args)=>
             {
-                levels.Level1.Restart();
-                Sublevel newForm = new Sublevel(levels.Level1, levels, Program.World.Player);
-                newForm.Show();
-                Close();
+                DialogResult result = MessageBox.Show("Начать уровень?" +
+                    " " +
+                    "\n" +
+                    "Обратите внимание: при перезапуске уровня монеты, заработанные при предыдущем прохождении спишутся.", 
+                    "Продолжение игры", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Program.World.Player.AfterLevelRestart(Program.LevelsGet.Level1.Points, Program.LevelsGet.Level1.LevelNumber);
+                    Program.LevelsGet.Level1.Restart();
+                    Sublevel newForm = new Sublevel(Program.LevelsGet.Level1, YourShop);
+                    newForm.Show();
+                    Close();
+                }
             };
             level2Point.Click += (sender, args) =>
             {
-                levels.Level2.Restart();
-                Sublevel newForm = new Sublevel(levels.Level2, levels, Program.World.Player);
-                newForm.Show();
-                Close();
+                DialogResult result = MessageBox.Show("Начать уровень?" +
+                    " " +
+                    "\n" +
+                    "Обратите внимание: при перезапуске уровня монеты, заработанные при предыдущем прохождении спишутся.", 
+                    "Продолжение игры", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Program.LevelsGet.Level2.Restart();
+                    Sublevel newForm = new Sublevel(Program.LevelsGet.Level2, YourShop);
+                    newForm.Show();
+                    Close();
+                }
             };
             level3Point.Click += (sender, args) =>
             {
-                levels.Level3.Restart();
-                Sublevel newForm = new Sublevel(levels.Level3, levels, Program.World.Player);
-                newForm.Show();
-                Close();
+                DialogResult result = MessageBox.Show("Начать уровень?" +
+                       " " +
+                       "\n" +
+                       "Обратите внимание: при перезапуске уровня монеты, заработанные при предыдущем прохождении спишутся.", 
+                       "Продолжение игры", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Program.LevelsGet.Level3.Restart();
+                    Sublevel newForm = new Sublevel(Program.LevelsGet.Level3, YourShop);
+                    newForm.Show();
+                    Close();
+                }
             };
             level4Point.Click += (sender, args) =>
             {
-                levels.Level4.Restart();
-                Sublevel newForm = new Sublevel(levels.Level4, levels, Program.World.Player);
-                newForm.Show();
-                Close();
+                DialogResult result = MessageBox.Show("Начать уровень?" +
+                    " " +
+                    "\n" +
+                    "Обратите внимание: при перезапуске уровня монеты, заработанные при предыдущем прохождении спишутся.", 
+                    "Продолжение игры", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Program.LevelsGet.Level4.Restart();
+                    Sublevel newForm = new Sublevel(Program.LevelsGet.Level4, YourShop);
+                    newForm.Show();
+                    Close();
+                }
             };
             level5Point.Click += (sender, args) =>
             {
-                levels.Level5.Restart();
-                Sublevel newForm = new Sublevel(levels.Level5, levels, Program.World.Player);
-                newForm.Show();
-                Close();
+                DialogResult result = MessageBox.Show("Начать уровень?" + 
+                    " " +
+                    "\n" +
+                    "Обратите внимание: при перезапуске уровня монеты, заработанные при предыдущем прохождении спишутся.", 
+                    "Продолжение игры", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Program.LevelsGet.Level5.Restart();
+                    Sublevel newForm = new Sublevel(Program.LevelsGet.Level5, YourShop);
+                    newForm.Show();
+                    Close();
+                }
             };
             level2Point.Enabled = false;
             level3Point.Enabled = false;
             level4Point.Enabled = false;
             level5Point.Enabled = false;
             
-            if (levels.Level1.Complete)
+            if (Program.LevelsGet.Level1.Complete)
             {
                 level2Point.Enabled = true;
             }
-            if (levels.Level2.Complete)
+            if (Program.LevelsGet.Level2.Complete)
             {
                 level3Point.Enabled = true;
             }
-            if (levels.Level3.Complete)
+            if (Program.LevelsGet.Level3.Complete)
             {
                 level4Point.Enabled = true;
             }
-            if (levels.Level4.Complete)
+            if (Program.LevelsGet.Level4.Complete)
             {
                 level5Point.Enabled = true;
                 
             }
             Controls.Add(Menu);
             Controls.Add(Money);
+            Controls.Add(Shop);
             Controls.Add(MoneyCount);
             Controls.Add(level1Point);
             Controls.Add(level2Point);

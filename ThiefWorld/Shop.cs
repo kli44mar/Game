@@ -33,19 +33,15 @@ namespace ThiefWorld
             };
         private Label MoneyCount;
         private Button Condition;
-        //public ThiefWorld World;
+        public Levels GetLevels;
 
-
-        public Shop(Character player, ShopOutfit shopOutfit, PictureBox picture)
+        public Shop(ShopOutfit shopOutfit)
         {
             WindowState = FormWindowState.Maximized;
             Size = MaximumSize;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             BackgroundImage = LevelsImages.ShopBackground;
-            Player = player;
             BigShop = shopOutfit;
-            Picture = picture;
-            //World = (ThiefWorld)this.Owner;
             Load += Shop_Load;
         }
 
@@ -143,11 +139,14 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 Font = new Font("Arial", 18, FontStyle.Bold)
             };
-            Menu.Click += (sender, args) => {
+            Menu.Click += (sender, args) => 
+            {
                 string str = JsonConvert.SerializeObject(Program.World.Player);
                 File.WriteAllText("./Game.json", str);
                 string str2 = JsonConvert.SerializeObject(BigShop);
                 File.WriteAllText("./Game2.json", str2);
+                var levelMap = new LevelMap(GetLevels, BigShop);
+                levelMap.Show();
                 Close(); 
             };
             InitialCostum.Click += (sender, args) => 
@@ -185,9 +184,6 @@ namespace ThiefWorld
                 if (Condition.Text == "Купить")
                     if (Program.World.Player.Money >= BigShop.PriceOfOutfit[MainCharacter.Name])
                     {
-                        /*var form = new Form();
-                        form.Size = new Size(300, 300);
-                        form.Show();*/
                         DialogResult result = MessageBox.Show("Вы действительно хотите приобрести данный комплект?", "Подтверждение покупки", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
@@ -195,7 +191,10 @@ namespace ThiefWorld
                             Program.World.Player.AfterPurchase(MainCharacter.Name, BigShop.PriceOfOutfit[MainCharacter.Name]);
                             Condition.Text = "Выбрать";
                             MoneyCount.Text = Program.World.Player.Money.ToString();
-                            //Program.World.pictureBox1.Image = Helpers.OutfitToFileMap[MainCharacter.Name];
+                            string str = JsonConvert.SerializeObject(Program.World.Player);
+                            File.WriteAllText("./Game.json", str);
+                            string str2 = JsonConvert.SerializeObject(BigShop);
+                            File.WriteAllText("./Game2.json", str2);
                         }
                     }
                     else MessageBox.Show("Недостаточно монет для покупки", "Мало денег", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -206,7 +205,6 @@ namespace ThiefWorld
                 }
 
             };
-            //Menu.Click += (sender, args) => { Close(); };
             Controls.Add(MainCharacter);
             Controls.Add(InitialCostum);
             Controls.Add(GrandsonCostum);

@@ -36,14 +36,14 @@ namespace ThiefWorld.Architecture
             var rnd = random.Next(0, newList.Count());
             var result = newList.ToList()[rnd];
             UsedSequences.Add(result);
-            return (rnd, result);
+            return (UsedSequences.Count-1, result);
         }
 
         public bool CompareResult(int numberOfSequence, string sequence)
         {
-            if (numberOfSequence >= SequenceList.Count )
+            if (numberOfSequence >= UsedSequences.Count )
                 throw new ArgumentException();
-            if (sequence.Equals(SequenceList[numberOfSequence]))
+            if (sequence == UsedSequences[numberOfSequence])
             {
                 Score += PointsForExample;
                 return true;

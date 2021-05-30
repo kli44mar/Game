@@ -63,6 +63,26 @@ namespace ThiefWorld {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Back {
+            get {
+                object obj = ResourceManager.GetObject("Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackGroundIm {
+            get {
+                object obj = ResourceManager.GetObject("BackGroundIm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap batman4 {
             get {
                 object obj = ResourceManager.GetObject("batman4", resourceCulture);
@@ -226,6 +246,16 @@ namespace ThiefWorld {
         internal static System.Drawing.Bitmap money {
             get {
                 object obj = ResourceManager.GetObject("money", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shop {
+            get {
+                object obj = ResourceManager.GetObject("shop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

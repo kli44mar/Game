@@ -24,7 +24,7 @@ namespace ThiefWorld.Architecture
             this.LevelNumber = levelNumber;
             this.Points = 0;
             this.AvailableClothes = clothes;
-            this.MathExamples = new MathematicalExamples(mathExamples, countOfExamples);
+            this.MathExamples = new MathematicalExamples(mathExamples, countOfExamples, levelNumber);
             this.Sequences = new Sequences(sequences, countOfSequences);
             this.Issue = new Issue(issues);
             this.Complete = false;
@@ -33,8 +33,15 @@ namespace ThiefWorld.Architecture
 
         public void ChangeConditionOfLevel()
         {
-            if (this.Points > 120)
+            if (this.Points >= 130)
                 this.Complete = true;
+        }
+
+        public void ChangeConditionAndPointsOfLevel(int points)
+        {
+            if (points > 150)
+                this.Complete = true;
+            this.Points = points;
         }
 
         public void Restart()
@@ -42,13 +49,18 @@ namespace ThiefWorld.Architecture
             this.MathExamples.RestartMath();
             this.Sequences.RestartSequences();
             this.Issue.IssueRestart();
-            //this.Complete = false;
+            this.Complete = false;
             this.Points = 0;
         }
 
         public void ChangePoints()
         {
             Points = this.MathExamples.Score + this.Sequences.Score + this.Issue.Score;
+        }
+
+        public void ChangePointsAfterDeserealize(int points)
+        {
+            Points = points;
         }
     }
 }
