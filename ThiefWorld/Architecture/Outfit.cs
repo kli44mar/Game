@@ -10,7 +10,7 @@ namespace ThiefWorld.Architecture
         public const string GrandSon = "Бабушкин внучок";
         public const string Gentleman = "Гавайский джентельмен";
         public const string JustBatman = "Просто Бэтмен";
-        public const string FancyGuy = "Модный парниша";
+        public const string FancyGuy = "Модный Юрик";
 
     }
 }

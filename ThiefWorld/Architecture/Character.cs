@@ -60,15 +60,5 @@ namespace ThiefWorld
                 this.LevelPointsAndComplete[level] = (true, points);
             else this.LevelPointsAndComplete[level] = (false, points);
         }
-
-        public string SerializeGame()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-
-        public static Character Deserialize(string json)
-        {
-            return JsonConvert.DeserializeObject<Character>(json);
-        }
     }
 }

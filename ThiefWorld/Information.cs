@@ -91,7 +91,7 @@ namespace ThiefWorld
             };
             Gener = new Label
             {
-                Location = new Point(800, 20),
+                Location = new Point(850, 20),
                 Text = "Общая информация",
                 BackColor = Color.Transparent,
                 Size = new Size(800, 100),
@@ -172,7 +172,7 @@ namespace ThiefWorld
             };
             ShopInf = new Label
             {
-                Location = new Point(950, 20),
+                Location = new Point(1000, 20),
                 Text = "Магазин",
                 BackColor = Color.Transparent,
                 Size = new Size(800, 100),
@@ -182,7 +182,7 @@ namespace ThiefWorld
             };
             Level = new Label
             {
-                Location = new Point(950, 20),
+                Location = new Point(1000, 20),
                 Text = "Уровни",
                 BackColor = Color.Transparent,
                 Size = new Size(800, 100),
@@ -236,14 +236,13 @@ namespace ThiefWorld
             Controls.Add(GeneralAdd);
 
         }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            var graphics = e.Graphics;
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            graphics.FillRectangle(Brushes.LemonChiffon, 500, 120, 1280, ClientSize.Height - 350);
+        }
 
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-        //    var graphics = e.Graphics;
-
-        //    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-        //    graphics.FillRectangle(Brushes.LemonChiffon, 0, 0, 500, ClientSize.Height);
-        //    //graphics.FillRectangle(Brushes.LemonChiffon, 700, 200, 1080, ClientSize.Height - 300);
-        //}
+        
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +24,15 @@ namespace ThiefWorld
         private readonly Label label;
         public readonly PictureBox pictureBox1;
         public Character Player;
-        private readonly ShopOutfit ShopOutfit;
-        private Levels GetLevels;
 
         public ThiefWorld(Character player)
         {
+            
+            var sp = new SoundPlayer();
+            sp.Stream = Properties.Resources.didjulja_gorod_velikogo_knjazhestva;
+            sp.PlayLooping();
             Program.World = this;
             this.Player = player;
-            //this.ShopOutfit = shop;
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
@@ -42,25 +44,11 @@ namespace ThiefWorld
                 Location = new Point(40, 40),
                 Text = "Дорогой друг, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
-<<<<<<< HEAD
-
-=======
->>>>>>> c71c649ccc8f23ca360e768baf80b9ab3461ab14
                 " Единственный способ заработать деньги и выбраться из другого мира - это прохождение уровней. Успехов!",
-               // Size = new Size(700, (int)Font.Size*24),
                 ForeColor = Color.Black,
                 Font = new Font("Tahoma", 12),
-<<<<<<< HEAD
                 Size = new Size(750, 200),
-                //Font = new Font("Tahoma", 13),
                 TextAlign = ContentAlignment.MiddleCenter,
-
-=======
-                //" Единственный способ заработать деньги и выжить -  проходить уровни.",
-                //Size = new Size(750, 200),
-                //Font = new Font("Tahoma", 13),
-                //TextAlign = ContentAlignment.MiddleCenter,
->>>>>>> c71c649ccc8f23ca360e768baf80b9ab3461ab14
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
@@ -69,11 +57,7 @@ namespace ThiefWorld
             {
                 Location = new Point(1641, 40),
                 Text = "Помощь",
-<<<<<<< HEAD
                 Font = new Font("Tahoma", 16, FontStyle.Bold),
-=======
-                Font = new Font("Tahoma", 16),
->>>>>>> c71c649ccc8f23ca360e768baf80b9ab3461ab14
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -126,7 +110,6 @@ namespace ThiefWorld
             button2.Click += (sender, args) =>
             {
                 string str = JsonConvert.SerializeObject(Program.World.Player);
-                //throw new ArgumentException();
                 File.WriteAllText("./Game.json", str);
                 Close();
             };
@@ -140,7 +123,6 @@ namespace ThiefWorld
                 if (play == null)
                     play = new Character("Leo");
                 Program.World.Player = play;
-                //var levels = new Levels();
                 Program.LevelsGet.Level1.Complete = Program.World.Player.LevelPointsAndComplete[1].Item1;
                 Program.LevelsGet.Level2.Complete = Program.World.Player.LevelPointsAndComplete[2].Item1;
                 Program.LevelsGet.Level3.Complete = Program.World.Player.LevelPointsAndComplete[3].Item1;
@@ -162,9 +144,6 @@ namespace ThiefWorld
                 ShopOutfit play1 = JsonConvert.DeserializeObject<ShopOutfit>(str1);
                 if (play1 == null)
                     play1 = new ShopOutfit();
-               // Shop shop = new Shop(player, play1, this.pictureBox1, Program.LevelsGet);
-                //shop.Owner = this;
-                //shop.Show();
                 LevelMap newForm = new LevelMap(Program.LevelsGet, play1);
                 newForm.Show();
             };

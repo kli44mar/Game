@@ -119,6 +119,8 @@ namespace ThiefWorld
             };
             Menu.Click += (sender, args) =>
             {
+                string str = JsonConvert.SerializeObject(Program.World.Player);
+                File.WriteAllText("./Game.json", str);
                 Close();
             };
             Shop.Click += (sender, args) =>

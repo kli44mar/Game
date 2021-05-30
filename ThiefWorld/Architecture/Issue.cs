@@ -13,7 +13,6 @@ namespace ThiefWorld.Architecture
         public Issue(Dictionary<string, string> issues)
         {
             this.Issues = issues;
-            //this.Score = 0;
         }
 
         public void IssueRestart()

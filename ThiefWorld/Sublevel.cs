@@ -22,7 +22,6 @@ namespace ThiefWorld
         Label label1 = new Label();
         private Level Level;
         private int Difficalty;
-        private Character Player;
         Button button4 = new Button();
         Button button3 = new Button();
         private IReadOnlyDictionary<bool, string> ToRussian = new Dictionary<bool, string>()
@@ -34,8 +33,6 @@ namespace ThiefWorld
         public Sublevel(Level level, ShopOutfit shop)
         {
             Difficalty = 1;
-            //Player = player;
-            //Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -221,10 +218,11 @@ namespace ThiefWorld
                 var needIssue = issue.GetIssue();
                 var label = new Label
                 {
-                    Location = new Point(ClientSize.Width / 2 - 100, 400),
-                    Size = new Size(800, 100),
+                    Location = new Point(ClientSize.Width / 2 - 155, 300),
+                    Size = new Size(900, 200),
                     Text = "Отгадайте загадку: " + needIssue.Item1,
                     FlatStyle = FlatStyle.Flat,
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Font = new Font("Tahoma", 10, FontStyle.Bold),
                     BackColor = Color.Transparent
                 };

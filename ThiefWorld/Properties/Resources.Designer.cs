@@ -161,6 +161,15 @@ namespace ThiefWorld.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream didjulja_gorod_velikogo_knjazhestva {
+            get {
+                return ResourceManager.GetStream("didjulja_gorod_velikogo_knjazhestva", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Initial {
