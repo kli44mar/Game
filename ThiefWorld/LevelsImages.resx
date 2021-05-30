@@ -133,17 +133,32 @@
   <data name="circle1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\quote-2021-04-25-778c11641d01f8d9a0deb59bebf25acb-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="circle1_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\circle1.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="circle2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\quote-2021-04-25-b65e6003c725a07af46e4d2834d59d9e-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle2_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\circle2.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="circle3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\quote-2021-04-25-c81a8164b93fd2e5a818af9aeca8b83c-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="circle3_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\circle3.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="circle4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\quote-2021-04-25-417346f893b1e454b3c5664ae357df03-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="circle4_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\circle4.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="circle5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\quote-2021-04-25-07704706bfb26ff9d0c035a82c7c5c5b-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="circle5_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\circle5.0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gentle3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\gentle3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

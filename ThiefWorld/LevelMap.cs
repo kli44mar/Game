@@ -36,7 +36,6 @@ namespace ThiefWorld
             YourShop = shop;
             Load += LevelMap_Load;
         }
-
         private void LevelMap_Load(object sender, EventArgs e)
         {
             level1Point = new PictureBox
@@ -52,7 +51,7 @@ namespace ThiefWorld
             {
                 Name = "2",
                 BackColor = Color.Transparent,
-                Image = LevelsImages.circle2,
+                Image = LevelsImages.circle2_0,
                 Location = new Point(850, 150),
                 Size = new Size(200, 200),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -61,7 +60,7 @@ namespace ThiefWorld
             {
                 Name = "3",
                 BackColor = Color.Transparent,
-                Image = LevelsImages.circle3,
+                Image = LevelsImages.circle3_0,
                 Location = new Point(1650, 150),
                 Size = new Size(200, 200),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -70,7 +69,7 @@ namespace ThiefWorld
             {
                 Name = "4",
                 BackColor = Color.Transparent,
-                Image = LevelsImages.circle4,
+                Image = LevelsImages.circle4_0,
                 Location = new Point(400, 700),
                 Size = new Size(200, 200),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -79,7 +78,7 @@ namespace ThiefWorld
             {
                 Name = "5",
                 BackColor = Color.Transparent,
-                Image = LevelsImages.circle5,
+                Image = LevelsImages.circle5_0,
                 Location = new Point(1300, 700),
                 Size = new Size(200, 200),
                 SizeMode = PictureBoxSizeMode.Zoom
@@ -212,19 +211,22 @@ namespace ThiefWorld
             if (Program.LevelsGet.Level1.Complete)
             {
                 level2Point.Enabled = true;
+                level2Point.Image = LevelsImages.circle2;
             }
             if (Program.LevelsGet.Level2.Complete)
             {
                 level3Point.Enabled = true;
+                level3Point.Image = LevelsImages.circle3;
             }
             if (Program.LevelsGet.Level3.Complete)
             {
                 level4Point.Enabled = true;
+                level4Point.Image = LevelsImages.circle4;
             }
             if (Program.LevelsGet.Level4.Complete)
             {
                 level5Point.Enabled = true;
-                
+                level5Point.Image = LevelsImages.circle5;
             }
             Controls.Add(Menu);
             Controls.Add(Money);

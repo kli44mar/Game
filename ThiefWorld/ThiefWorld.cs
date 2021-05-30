@@ -42,10 +42,17 @@ namespace ThiefWorld
                 Location = new Point(40, 40),
                 Text = "Дорогой друг, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
+<<<<<<< HEAD
                 " Единственный способ заработать деньги и выбраться из другого мира - это прохождение уровней. Успехов!",
                 Size = new Size(700, (int)Font.Size*24),
                 ForeColor = Color.Black,
                 Font = new Font("Tahoma", 12),
+=======
+                " Единственный способ заработать деньги и выжить -  проходить уровни.",
+                Size = new Size(750, 200),
+                Font = new Font("Tahoma", 13),
+                TextAlign = ContentAlignment.MiddleCenter,
+>>>>>>> 01960c2b690dd6b852360ff4ffa1ea0ec5fb022a
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
@@ -53,8 +60,13 @@ namespace ThiefWorld
             button = new Button
             {
                 Location = new Point(1641, 40),
+<<<<<<< HEAD
                 Text = "Помощь",
                 Font = new Font("Tahoma", 16),
+=======
+                Text = "Магазин",
+                Font = new Font("Tahoma", 16, FontStyle.Bold),
+>>>>>>> 01960c2b690dd6b852360ff4ffa1ea0ec5fb022a
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -71,8 +83,24 @@ namespace ThiefWorld
 
             button.Click += (sender, args) =>
             {
+<<<<<<< HEAD
                 var information = new Information();
                 information.Show();
+=======
+                string str;
+                if (!File.Exists("Game2.json"))
+                {
+                    File.Create("./ Game2.json");
+                    str = "";
+                }
+                else
+                    str = File.ReadAllText("./Game2.json");
+                ShopOutfit play = JsonConvert.DeserializeObject<ShopOutfit>(str);
+                if (play == null)
+                    play = ShopOutfit;
+                 Shop shop = new Shop(player, play, this.pictureBox1);
+                shop.Show();
+>>>>>>> 01960c2b690dd6b852360ff4ffa1ea0ec5fb022a
             };
 
             button2 = new Button
@@ -158,8 +186,6 @@ namespace ThiefWorld
                 newForm.Show();
             };
 
-            
-            
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);
             Controls.Add(button2);

@@ -43,7 +43,8 @@ namespace ThiefWorld
             DoubleBuffered = true;
             BackgroundImageLayout = ImageLayout.Stretch;
             StartPosition = FormStartPosition.CenterScreen;
-
+            button3.Enabled = false;
+            button4.Enabled = false;
             var labelCentr = new Label
             {
                 Location = new Point(1040, 300),
@@ -64,6 +65,8 @@ namespace ThiefWorld
             };
             buttonCentr1.Click += (sender, args) =>
             {
+                button3.Enabled = false;
+                button4.Enabled = false;
                 Difficalty = 1;
                 Clear();
             };
@@ -78,6 +81,8 @@ namespace ThiefWorld
             };
             buttonCentr2.Click += (sender, args) =>
             {
+                button3.Enabled = false;
+                button4.Enabled = false;
                 Difficalty = 2;
                 Clear();
             };
@@ -92,6 +97,8 @@ namespace ThiefWorld
             };
             buttonCentr3.Click += (sender, args) =>
             {
+                button3.Enabled = false;
+                button4.Enabled = false;
                 Difficalty = 3;
                 Clear();            };
             var labelCentr2 = new Label
@@ -163,6 +170,7 @@ namespace ThiefWorld
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 255, 192)
             };
+            
             Level = level;
             var mathExamples = Level.MathExamples;
             var sequences = Level.Sequences;
@@ -424,7 +432,6 @@ namespace ThiefWorld
         protected override void OnPaint(PaintEventArgs e)
         {
             var graphics = e.Graphics;
-
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             graphics.FillRectangle(Brushes.LemonChiffon, 0, 0, 500, ClientSize.Height);
             graphics.FillRectangle(Brushes.LemonChiffon, 700, 200, 1080, ClientSize.Height-300);
