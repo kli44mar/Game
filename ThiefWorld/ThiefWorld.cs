@@ -41,9 +41,10 @@ namespace ThiefWorld
                 Location = new Point(40, 40),
                 Text = "Дорогой вор, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
-                " Единственный способ зароботать деньги -  проходить уровни.",
-                Size = new Size(700, 200),
-                Font = new Font("Tahoma", 12),
+                " Единственный способ заработать деньги и выжить -  проходить уровни.",
+                Size = new Size(750, 200),
+                Font = new Font("Tahoma", 13),
+                TextAlign = ContentAlignment.MiddleCenter,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
@@ -52,7 +53,7 @@ namespace ThiefWorld
             {
                 Location = new Point(1641, 40),
                 Text = "Магазин",
-                Font = new Font("Tahoma", 16),
+                Font = new Font("Tahoma", 16, FontStyle.Bold),
                 Size = new Size(180, 110),
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
@@ -81,7 +82,6 @@ namespace ThiefWorld
                 if (play == null)
                     play = ShopOutfit;
                  Shop shop = new Shop(player, play, this.pictureBox1);
-                //shop.Owner = this;
                 shop.Show();
             };
 
@@ -138,8 +138,6 @@ namespace ThiefWorld
                 newForm.Show();
             };
 
-            
-            
             Load += (sender, args) => OnSizeChanged(EventArgs.Empty);
             Controls.Add(button);
             Controls.Add(button2);
