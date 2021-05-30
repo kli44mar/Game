@@ -43,13 +43,13 @@ namespace ThiefWorld
                 Text = "Дорогой друг, не стоило воровать то, в чем ты не разбираешься. Ты украл магический артефакт, наказывающий людей за их злодеяния, " +
                 "перенося в другие миры. Ты попал в свой собственный мир, если попробуешь что-нибудь украсть, то сразу умрешь." +
                 " Единственный способ заработать деньги и выбраться из другого мира - это прохождение уровней. Успехов!",
-                Size = new Size(700, (int)Font.Size*24),
+                //Size = new Size(700, (int)Font.Size*24),
                 ForeColor = Color.Black,
                 Font = new Font("Tahoma", 12),
                 //" Единственный способ заработать деньги и выжить -  проходить уровни.",
-                //Size = new Size(750, 200),
+                Size = new Size(750, 200),
                 //Font = new Font("Tahoma", 13),
-                //TextAlign = ContentAlignment.MiddleCenter,
+                TextAlign = ContentAlignment.MiddleCenter,
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
