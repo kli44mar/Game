@@ -240,7 +240,7 @@ namespace ThiefWorld
         {
             var graphics = e.Graphics;
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            graphics.FillRectangle(Brushes.LemonChiffon, 500, 120, 1280, ClientSize.Height - 350);
+            graphics.FillRectangle(Brushes.LemonChiffon, 500, 120, 1280, ClientSize.Height - 170);
         }
 
         
