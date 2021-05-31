@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +24,15 @@ namespace ThiefWorld
         private readonly Label label;
         public readonly PictureBox pictureBox1;
         public Character Player;
-        private readonly ShopOutfit ShopOutfit;
-        private Levels GetLevels;
 
         public ThiefWorld(Character player)
         {
+            
+            var sp = new SoundPlayer();
+            sp.Stream = Properties.Resources.didjulja_gorod_velikogo_knjazhestva;
+            sp.PlayLooping();
             Program.World = this;
             this.Player = player;
-            //this.ShopOutfit = shop;
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources._3;
             Size = MaximumSize;
@@ -47,7 +49,6 @@ namespace ThiefWorld
                 Font = new Font("Tahoma", 12),
                 Size = new Size(750, 200),
                 TextAlign = ContentAlignment.MiddleCenter,
-
                 FlatStyle = FlatStyle.Flat,
                 BackColor = Color.FromArgb(255, 239, 172)
             };
@@ -109,7 +110,6 @@ namespace ThiefWorld
             button2.Click += (sender, args) =>
             {
                 string str = JsonConvert.SerializeObject(Program.World.Player);
-                //throw new ArgumentException();
                 File.WriteAllText("./Game.json", str);
                 Close();
             };
@@ -123,7 +123,6 @@ namespace ThiefWorld
                 if (play == null)
                     play = new Character("Leo");
                 Program.World.Player = play;
-                //var levels = new Levels();
                 Program.LevelsGet.Level1.Complete = Program.World.Player.LevelPointsAndComplete[1].Item1;
                 Program.LevelsGet.Level2.Complete = Program.World.Player.LevelPointsAndComplete[2].Item1;
                 Program.LevelsGet.Level3.Complete = Program.World.Player.LevelPointsAndComplete[3].Item1;
@@ -145,9 +144,6 @@ namespace ThiefWorld
                 ShopOutfit play1 = JsonConvert.DeserializeObject<ShopOutfit>(str1);
                 if (play1 == null)
                     play1 = new ShopOutfit();
-               // Shop shop = new Shop(player, play1, this.pictureBox1, Program.LevelsGet);
-                //shop.Owner = this;
-                //shop.Show();
                 LevelMap newForm = new LevelMap(Program.LevelsGet, play1);
                 newForm.Show();
             };

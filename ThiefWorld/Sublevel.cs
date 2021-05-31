@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -22,7 +24,6 @@ namespace ThiefWorld
         Label label1 = new Label();
         private Level Level;
         private int Difficalty;
-        private Character Player;
         Button button4 = new Button();
         Button button3 = new Button();
         private IReadOnlyDictionary<bool, string> ToRussian = new Dictionary<bool, string>()
@@ -34,8 +35,6 @@ namespace ThiefWorld
         public Sublevel(Level level, ShopOutfit shop)
         {
             Difficalty = 1;
-            //Player = player;
-            //Levels = levels;
             Load += (sender, args) => StartTimer();
             WindowState = FormWindowState.Maximized;
             BackgroundImage = Properties.Resources.Level_Background;
@@ -155,6 +154,8 @@ namespace ThiefWorld
                         Program.LevelsGet.Level5.ChangeConditionAndPointsOfLevel(Level.Points);
                         break;
                 }
+                string str = JsonConvert.SerializeObject(Program.World.Player);
+                File.WriteAllText("./Game.json", str);
                 var newForm = new LevelMap(Program.LevelsGet, shop);
                 newForm.Show();
                 Close();
@@ -251,6 +252,7 @@ namespace ThiefWorld
                     var answer = box.Text;
                     box.Enabled = false;
                     box.Text = ToRussian[Level.Issue.CompareResult(needIssue.Item1, answer)];
+                    button2.Enabled = false;
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
