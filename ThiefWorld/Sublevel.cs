@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -152,6 +154,8 @@ namespace ThiefWorld
                         Program.LevelsGet.Level5.ChangeConditionAndPointsOfLevel(Level.Points);
                         break;
                 }
+                string str = JsonConvert.SerializeObject(Program.World.Player);
+                File.WriteAllText("./Game.json", str);
                 var newForm = new LevelMap(Program.LevelsGet, shop);
                 newForm.Show();
                 Close();
@@ -248,6 +252,7 @@ namespace ThiefWorld
                     var answer = box.Text;
                     box.Enabled = false;
                     box.Text = ToRussian[Level.Issue.CompareResult(needIssue.Item1, answer)];
+                    button2.Enabled = false;
                 };
                 Controls.Add(button2);
                 Controls.Add(label);
